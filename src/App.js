@@ -18,41 +18,56 @@ function App() {
     dbRef.push(userInput);
     setUserInput("");
 
-    console.log("IAM PROMPTS", prompts);
-    setPrompts(prompts[randomNumber(prompts)]);
+    // console.log("IAM PROMPTS", prompts);
+    // setPrompts(prompts[randomNumber(prompts)]);
+  };
+  //button to generate random prompt
+  const handleRandom = (e) => {
+    e.preventDefault();
+    const promptLength = prompts.length;
+    setDisplayPrompts(prompts[randomNumber(promptLength)]);
   };
 
   //grabs from database on mount
   useEffect(() => {
     const dbRef = firebase.database().ref();
-
     dbRef.on("value", (response) => {
       const responsePrompts = response.val().prompts;
-      // console.log(responsePrompts);
-      // console.log(response.val().musings);
 
       const newPromptsState = [];
 
       for (const key in responsePrompts) {
         newPromptsState.push(responsePrompts[key]);
       }
+      //set the first prompt with a random selection
+      const promptLength = newPromptsState.length;
+      setDisplayPrompts(newPromptsState[randomNumber(promptLength)]);
+      //hold array with all prompts for future manipulations
       setPrompts(newPromptsState);
-      // console.log(newPromptsState, "NEWPROMPT STATE");
-      console.log("newprompt length", newPromptsState.length);
     });
   }, []);
 
-  const randomNumber = () => {
-    const number = Math.floor(Math.random() * 4);
-    // console.log("random number length", array.length);
-    // console.log("random number", number);
+  //generate a random number
+  const randomNumber = (length) => {
+    const number = Math.floor(Math.random() * length);
     return number;
   };
+  function toggleDisplay(e) {
+    // e.preventDefault();
+    console.log(e.target.className);
+    if (e.target.className === "show") {
+      e.target.className = "hidden";
+    } else {
+      e.target.className = "show";
+    }
+  }
 
   return (
     <div className="App">
       <h1>our new thing 🤔☁☁️🧠💜</h1>
-      <h2>{prompts}</h2>
+      <h2 className="show" onClick={toggleDisplay}>
+        {displayPrompts}
+      </h2>
 
       <form action="submit">
         <label htmlFor="newMusings">Put a thought there</label>
@@ -63,6 +78,7 @@ function App() {
           value={userInput}
         />
         <button onClick={handleClick}>im a button</button>
+        <button onClick={handleRandom}>generate another prompt</button>
       </form>
     </div>
   );
