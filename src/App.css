@@ -1,17 +1,5 @@
-/* STYLING DIRECTORY 
-- react defaullt
-- setup snippet
-/GENERAL STYLING
-- variables
-- header
-- writing prompt container
-- musings returned container
-- footer
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 
-
-*/
-
-/* react default styling start */
 .App {
   text-align: center;
 }
@@ -50,7 +38,9 @@
     transform: rotate(360deg);
   }
 }
+
 /* react default styling end */
+
 
 /* SETUP SNIPPET START */
 html {
@@ -294,6 +284,78 @@ html {
   padding: 20px;
 }
 
+
+body {
+  background: var(--primary3);
+}
+
+h1 {
+  color: var(--primary1);
+  font-family: Playfair Display;
+  font-size: 72px;
+}
+
+h3 {
+  color: var(--primary2);
+  font-family: sans-serif;
+}
+
+h1, h3 {
+  text-transform: uppercase;
+}
+
+h2 {
+  font-family: Playfair Display;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  font-family: Playfair Display;
+  font-size: 24px;
+  color: var(--white);
+  background: var(--primary1);
+  width: 50vw;
+  height: auto;
+  padding: 20px;
+}
+
+input {
+  background: var(--primary3);
+  border: 8px solid var(--primary1);
+  margin: 0 auto;
+  width: 50vw;
+  height: 20vh;
+}
+
+input:focus {
+  border: 2px solid white;
+  padding: 15px;
+}
+
+button {
+  color: var(--white);
+  background: var(--primary1);
+  border: 1px solid var(--primary3);
+  cursor: pointer;
+  font-family: Playfair Display;
+  font-size: 28px;
+  font-weight: bold;
+  height: auto;
+  margin: 10px;
+  padding: 20px 10px;
+  text-transform: uppercase;
+  width: 15vw;
+}
+
+button:focus, button:hover {
+  border: 2px solid white;
+}
+
 /* footer start */
 footer {
   display: flex;
@@ -301,4 +363,6 @@ footer {
   justify-content: flex-start;
   align-items: center;
 }
+
 /* footer end */
+

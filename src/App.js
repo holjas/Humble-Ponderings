@@ -69,19 +69,23 @@ function App() {
 
   return (
     <div className="App">
-      <h1>our new thing 🤔☁☁️🧠💜</h1>
-      <h2>{displayPrompts}</h2>
 
-      <form action="submit">
-        <label htmlFor="newMusings">Put a thought there</label>
-        <input
-          type="text"
-          id="newMusings"
-          onChange={handleChange}
-          value={userInput}
-        />
+      <h1>Humble Ponderings</h1>
+      <h3>Get your thoughts out, Get your feels out</h3>
+        <h2 className="show" onClick={toggleDisplay}>
+          {displayPrompts}
+        </h2>
+
+        <form action="submit">
+          <label htmlFor="newMusings">Put a thought there</label>
+          <input
+            type="text"
+            id="newMusings"
+            onChange={handleChange}
+            value={userInput}
+          />
         <button onClick={handleClick}>im a button</button>
-        <button onClick={handleRandom}>generate another prompt</button>
+        <button onClick={handleRandom}>generate a new prompt</button>
       </form>
 
       <div className="musingContainer">
