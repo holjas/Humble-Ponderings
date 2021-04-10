@@ -3,6 +3,7 @@ import firebase from "./firebase";
 import { useState, useEffect } from "react";
 
 import Musings from "./Musings";
+import Footer from "./Footer";
 
 function App() {
   const [prompts, setPrompts] = useState([]);
@@ -84,11 +85,9 @@ function App() {
       </form>
 
       <div className="musingContainer">
-        {/* {musings.map((item) => {
-          return <Musings key={item.key} musing={item.musing} />;
-        })} */}
         <Musings musingState={musings} />
       </div>
+      <Footer />
     </div>
   );
 }
