@@ -19,8 +19,9 @@ function App() {
   //submits the input to the database
   const handleClick = (e) => {
     e.preventDefault();
+    console.log(displayPrompts);
     const dbRef = firebase.database().ref().child("musings");
-    dbRef.push(userInput);
+    dbRef.push([userInput, displayPrompts]);
     setUserInput("");
   };
 
@@ -52,6 +53,7 @@ function App() {
 
       //setting musings into musings state
       for (const key in responseMusings) {
+        console.log(responseMusings);
         newMusingsState.push({
           key: key,
           musing: responseMusings[key],
