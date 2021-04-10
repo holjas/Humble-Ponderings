@@ -39,14 +39,8 @@
   }
 }
 
+/* react default styling end */
 
-/* .hidden {
-  color: blue;
-  /* display: none; */
-/* } */
-/* .show {
-  color: red;
-} */
 
 /* SETUP SNIPPET START */
 html {
@@ -290,6 +284,7 @@ html {
   padding: 20px;
 }
 
+
 body {
   background: var(--primary3);
 }
@@ -368,4 +363,6 @@ footer {
   justify-content: flex-start;
   align-items: center;
 }
+
 /* footer end */
+
