@@ -2,25 +2,27 @@ import "./App.css";
 import firebase from "./firebase";
 import { useState, useEffect } from "react";
 
+import Musings from "./Musings";
+
 function App() {
   const [prompts, setPrompts] = useState([]);
   const [displayPrompts, setDisplayPrompts] = useState("");
   const [userInput, setUserInput] = useState("");
+  const [musings, setMusings] = useState([]);
 
   //captures the text input values
   const handleChange = (event) => {
     setUserInput(event.target.value);
   };
+
   //submits the input to the database
   const handleClick = (e) => {
     e.preventDefault();
     const dbRef = firebase.database().ref().child("musings");
     dbRef.push(userInput);
     setUserInput("");
-
-    // console.log("IAM PROMPTS", prompts);
-    // setPrompts(prompts[randomNumber(prompts)]);
   };
+
   //button to generate random prompt
   const handleRandom = (e) => {
     e.preventDefault();
@@ -33,9 +35,11 @@ function App() {
     const dbRef = firebase.database().ref();
     dbRef.on("value", (response) => {
       const responsePrompts = response.val().prompts;
-
       const newPromptsState = [];
+      const responseMusings = response.val().musings;
+      const newMusingsState = [];
 
+      //setting prompts into prompt state
       for (const key in responsePrompts) {
         newPromptsState.push(responsePrompts[key]);
       }
@@ -44,6 +48,15 @@ function App() {
       setDisplayPrompts(newPromptsState[randomNumber(promptLength)]);
       //hold array with all prompts for future manipulations
       setPrompts(newPromptsState);
+
+      //setting musings into musings state
+      for (const key in responseMusings) {
+        newMusingsState.push({
+          key: key,
+          musing: responseMusings[key],
+        });
+      }
+      setMusings(newMusingsState);
     });
   }, []);
 
@@ -69,6 +82,13 @@ function App() {
         <button onClick={handleClick}>im a button</button>
         <button onClick={handleRandom}>generate another prompt</button>
       </form>
+
+      <div className="musingContainer">
+        {/* {musings.map((item) => {
+          return <Musings key={item.key} musing={item.musing} />;
+        })} */}
+        <Musings musingState={musings} />
+      </div>
     </div>
   );
 }
