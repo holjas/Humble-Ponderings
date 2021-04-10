@@ -112,6 +112,7 @@ function App() {
       <div className="musingContainer wrapper">
         <Musings musingState={musings} />
       </div>
+
       <Footer />
     </div>
   );
