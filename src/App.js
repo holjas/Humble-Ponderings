@@ -52,22 +52,11 @@ function App() {
     const number = Math.floor(Math.random() * length);
     return number;
   };
-  function toggleDisplay(e) {
-    // e.preventDefault();
-    console.log(e.target.className);
-    if (e.target.className === "show") {
-      e.target.className = "hidden";
-    } else {
-      e.target.className = "show";
-    }
-  }
 
   return (
     <div className="App">
       <h1>our new thing 🤔☁☁️🧠💜</h1>
-      <h2 className="show" onClick={toggleDisplay}>
-        {displayPrompts}
-      </h2>
+      <h2>{displayPrompts}</h2>
 
       <form action="submit">
         <label htmlFor="newMusings">Put a thought there</label>
