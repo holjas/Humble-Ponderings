@@ -1,3 +1,4 @@
+import firebase from "./firebase";
 import {
   faBookmark,
   faEdit,
@@ -6,20 +7,24 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+//-MY180moA_TcalR8DXi-
+//name on item you could never throw away
 
 function Musings(props) {
-  const stuff = Object.values(props);
-  // stuff.map((x, y) => console.log(x + "word"));
-  for (const item in stuff) {
-    const objectKey = Object.keys(stuff[item]);
-    objectKey.sort((a, b) => {
-      return b - a;
-    });
-    // console.log(stuff[item]);
-  }
-
-  // console.log(props.musingState[1].musing[0]);
-  // props.musingState.map((x) => console.log(x.musing[0]));
+  const handleEdit = (e) => {
+    //onclick, grab the user input text
+    // const dbRef = firebase.database();
+    const userId = `-MY18GTHtDlP_yYGnRXh`;
+    // firebase.database().ref(`${userId}`).set("WORDS");
+    firebase
+      .database()
+      .ref("musings/" + userId)
+      .set({
+        1: "this is one",
+        2: "TRY TO TARGET THIS",
+        3: "this is three",
+      });
+  };
 
   return (
     <section className="musingContainer warpperThick">
@@ -36,10 +41,17 @@ function Musings(props) {
               {/* <p>mood={item.musing[4]}</p> */}
 
               <div className="musingNav">
-                <FontAwesomeIcon icon={faSmile} />
-                <FontAwesomeIcon icon={faEdit} />
-                <FontAwesomeIcon icon={faTrashAlt} />
-                <FontAwesomeIcon icon={faBookmark} />
+                <FontAwesomeIcon icon={faSmile} className="navMood" />
+
+                <div onClick={handleEdit} key={item.key}>
+                  <FontAwesomeIcon icon={faEdit} className="navButton" />
+                </div>
+                <div>
+                  <FontAwesomeIcon icon={faTrashAlt} className="navButton" />
+                </div>
+                <div>
+                  <FontAwesomeIcon icon={faBookmark} className="navButton" />
+                </div>
               </div>
             </div>
           </div>

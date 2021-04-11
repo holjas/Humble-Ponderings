@@ -72,16 +72,25 @@
   align-items: center;
   padding-top: 35px;
 }
-.musingNav svg {
+/* .musingNav svg {
+  
+  color: red;
+} */
+/* .musingNav svg:nth-child(1) {
+  color: var(--primary1);
+  color: blue;
+} */
+.navMood {
+  font-size: 1.8rem;
+  color: var(--primary1);
+}
+.navButton {
   font-size: 1.8rem;
   transition: 0.3s;
   color: var(--primary2);
 }
-.musingNav svg:first-child {
-  color: var(--primary1);
-}
-.musingNav svg:not(:first-child):hover,
-.musingNav svg:not(:first-child):focus {
+.navButton:hover,
+.navButton:focus {
   cursor: pointer;
   transform: scale(1.2);
   color: var(--primary1);
@@ -139,6 +148,7 @@ footer,
 .footerCreatedText {
   width: 100%;
   align-items: center;
+  min-height: 3rem;
 }
 .footerSmallContainer h2 {
   letter-spacing: var(--letterSpacingHeadline);
