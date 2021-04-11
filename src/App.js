@@ -4,12 +4,14 @@ import "./App.css";
 import firebase from "./firebase";
 import { useState, useEffect } from "react";
 
+import Header from "./Header";
 import Musings from "./Musings";
 import Footer from "./Footer";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGrinAlt, faGrinHearts, faGrinStars, faMehRollingEyes, faAngry, faDizzy, faTired, faSadCry } from '@fortawesome/free-regular-svg-icons'
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGrin } from "@fortawesome/free-solid-svg-icons";
 
 
 function App() {
@@ -17,7 +19,7 @@ function App() {
   const [displayPrompts, setDisplayPrompts] = useState("");
   const [userInput, setUserInput] = useState("");
   const [musings, setMusings] = useState([]);
-  const [mood, setMood] = useState('');
+  const [mood, setMood] = useState("");
   const [countMusings, setCountMusings] = useState(1);
 
 
@@ -42,6 +44,7 @@ function App() {
     const dateTime = dateTimeFunction();
     dbRef.push([countMusings, displayPrompts, userInput, dateTime, mood]);
     setUserInput("");
+    setMood("");
     setCountMusings(countMusings + 1);
   };
 
@@ -62,7 +65,7 @@ function App() {
 
   //submits selected mood to the database
   const handleMood = (e) => {
-    const selectedMood=(e.target.id)
+    const selectedMood = e.target.id;
     setMood(selectedMood);
   }
 
@@ -73,6 +76,8 @@ function App() {
     // dbRef.("musings").remove();
     console.log('clicked!')
   }
+
+  };
 
   //grabs from database on mount
   useEffect(() => {
@@ -146,6 +151,37 @@ function App() {
       <section className="musingContainer wrapper">
         <Musings musingState={musings} removeMusing={removeMusing}/>
       </section>
+
+    <div className="App appWrapper">
+      <Header />
+
+      <h2 className="show" onClick={toggleDisplay}>
+        {displayPrompts}
+      </h2>
+      <h3>{mood}</h3>
+      <form action="submit">
+        <label htmlFor="newMusings">Put a thought there</label>
+        <input
+          type="text"
+          id="newMusings"
+          onChange={handleChange}
+          value={userInput}
+        />
+        <div>
+          <FontAwesomeIcon
+            icon={faGrin}
+            onClick={handleMood}
+            value="grin"
+            id="grin"
+          />
+          {/* <li onClick={handleMood} value="angry"><FontAwesomeIcon icon={faAngry} /></li>
+          <li onClick={handleMood} value="dizzy"><FontAwesomeIcon icon={faDizzy} /></li> */}
+        </div>
+        <button onClick={handleClick}>im a button</button>
+        <button onClick={handleRandom}>generate a new prompt</button>
+      </form>
+
+      <Musings musingState={musings} />
 
       <Footer />
     </div>

@@ -239,9 +239,15 @@ html {
   --fontHeadline: "Playfair Display", serif;
   --fontMain: "Montserrat", sans-serif;
 }
-
+.appWrapper {
+  max-width: 1220px;
+  margin: 0 auto;
+}
 .wrapper {
   padding: 40px;
+}
+.warpperThick {
+  padding: 100px 80px;
 }
 
 body {
@@ -250,8 +256,9 @@ body {
 
 h1 {
   color: var(--primary1);
-  font-family: Playfair Display;
+  font-family: var(--fontHeadline);
   font-size: 72px;
+  margin: 0;
 }
 
 h3 {
@@ -271,7 +278,7 @@ h3,
 h4 {
   text-transform: uppercase;
   letter-spacing: 2.5px;
-  /* margin: 0; */
+  margin: 0;
 }
 
 h2 {
@@ -285,7 +292,7 @@ form {
 }
 
 label {
-  font-family: Playfair Display;
+  font-family: var(--fontHeadline);
   font-size: 24px;
   color: var(--white);
   background: var(--primary1);
@@ -345,7 +352,7 @@ button {
   background: var(--primary1);
   border: 1px solid var(--primary3);
   cursor: pointer;
-  font-family: Playfair Display;
+  font-family: var(--fontHeadline);
   font-size: 28px;
   font-weight: bold;
   height: auto;
