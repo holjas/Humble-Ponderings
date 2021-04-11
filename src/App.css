@@ -1,46 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
-
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* react default styling end */
-
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
 
 /* SETUP SNIPPET START */
 html {
@@ -54,7 +12,6 @@ body {
 }
 article,
 aside,
-footer,
 header,
 nav,
 section {
@@ -287,7 +244,6 @@ html {
   padding: 40px;
 }
 
-
 body {
   background: var(--primary3);
 }
@@ -299,16 +255,27 @@ h1 {
 }
 
 h3 {
-  color: var(--primary2);
-  font-family: sans-serif;
+  /* color: var(--primary3); */
+  font-family: var(--fontHeadline);
 }
-
-h1, h3 {
+h4 {
+  font-family: var(--fontMain);
+}
+p {
+  font-family: var(--fontMain);
+  margin: 0;
+}
+h1,
+h2,
+h3,
+h4 {
   text-transform: uppercase;
+  letter-spacing: 2.5px;
+  /* margin: 0; */
 }
 
 h2 {
-  font-family: Playfair Display;
+  font-family: "Playfair Display";
 }
 
 form {
@@ -359,17 +326,7 @@ button {
   width: 15vw;
 }
 
-button:focus, button:hover {
+button:focus,
+button:hover {
   border: 2px solid white;
 }
-
-/* footer start */
-footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-/* footer end */
-
