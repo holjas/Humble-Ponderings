@@ -18,11 +18,8 @@ function App() {
   const [displayPrompts, setDisplayPrompts] = useState("");
   const [userInput, setUserInput] = useState("");
   const [musings, setMusings] = useState([]);
-<<<<<<< HEAD
   const [mood, setMood] = useState('');
-=======
   const [countMusings, setCountMusings] = useState(1);
->>>>>>> main
 
   //grab date and time
   const dateTimeFunction = () => {
@@ -41,18 +38,9 @@ function App() {
   const handleClick = (e) => {
     e.preventDefault();
     const dbRef = firebase.database().ref().child("musings");
-<<<<<<< HEAD
-<<<<<<< HEAD
-    dbRef.push([userInput, mood]);
-=======
-    dbRef.push([userInput, displayPrompts]);
->>>>>>> main
-=======
 
     const dateTime = dateTimeFunction();
-
-    dbRef.push([countMusings, displayPrompts, userInput, dateTime]);
->>>>>>> main
+    dbRef.push([countMusings, displayPrompts, userInput, dateTime, mood]);
     setUserInput("");
     setCountMusings(countMusings + 1);
   };
@@ -130,7 +118,6 @@ function App() {
     <div className="App">
       <h1>Humble Ponderings</h1>
       <h3>Get your thoughts out, Get your feels out</h3>
-<<<<<<< HEAD
         <h2 className="show" onClick={toggleDisplay}>
           {displayPrompts}
         </h2>
@@ -148,20 +135,6 @@ function App() {
           {/* <li onClick={handleMood} value="angry"><FontAwesomeIcon icon={faAngry} /></li>
           <li onClick={handleMood} value="dizzy"><FontAwesomeIcon icon={faDizzy} /></li> */}
         </div>
-=======
-      <h2 className="show" onClick={toggleDisplay}>
-        {displayPrompts}
-      </h2>
-
-      <form action="submit">
-        <label htmlFor="newMusings">Put a thought there</label>
-        <input
-          type="text"
-          id="newMusings"
-          onChange={handleChange}
-          value={userInput}
-        />
->>>>>>> main
         <button onClick={handleClick}>im a button</button>
         <button onClick={handleRandom}>generate a new prompt</button>
       </form>
