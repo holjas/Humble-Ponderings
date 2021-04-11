@@ -18,6 +18,15 @@ function Musings(props) {
     console.log(stuff[item]);
   }
 
+  // // remove musing
+  // const removeMusing = (props) => {
+  //   const userId = `-MY23fP9h4gvOjL_I7-0`;
+  //   firebase.database().ref("musings/" + userId);
+  //   // dbRef.("musings").remove();
+  //   console.log('clicked!')
+  // }
+
+
   // console.log(props.musingState[1].musing[0]);
   // props.musingState.map((x) => console.log(x.musing[0]));
 
@@ -36,7 +45,7 @@ function Musings(props) {
             <section className="moodMeter">
               <FontAwesomeIcon icon={faSmile} />
               <FontAwesomeIcon icon={faEdit} />
-              <FontAwesomeIcon icon={faTrashAlt} />
+              <FontAwesomeIcon icon={faTrashAlt} onClick={ () => props.removeMusing(props.musings) }/>
               <FontAwesomeIcon icon={faBookmark} />
             </section>
           </div>
