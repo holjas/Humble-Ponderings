@@ -318,6 +318,35 @@ p {
   font-family: var(--fontMain);
 }
 
+.moodText {
+  background: var(--primary1);
+  color: var(--primary3);
+  width: 50vw;
+  text-align: center;
+  font-family: var(--fontHeadline);
+  margin-top: 20px;
+  padding: 20px 0;
+}
+
+.moodWrapper {
+  border: 8px solid var(--primary1);
+  color: var(--primary1);
+  display: flex;
+  flex-direction: row;
+  font-size: 50px;
+  justify-content: space-between;
+  padding: 10px;
+  width: 50vw;
+}
+
+.mood {
+  cursor: pointer;
+}
+
+.mood:hover {
+  color: var(--primary2);
+}
+
 button {
   color: var(--white);
   background: var(--primary1);

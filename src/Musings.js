@@ -11,6 +11,28 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 //name on item you could never throw away
 
 function Musings(props) {
+  const stuff = Object.values(props);
+  // stuff.map((x, y) => console.log(x + "word"));
+  for (const item in stuff) {
+    const objectKey = Object.keys(stuff[item]);
+    objectKey.sort((a, b) => {
+      return b - a;
+    });
+    console.log(stuff[item]);
+  }
+
+  // // remove musing
+  // const removeMusing = (props) => {
+  //   const userId = `-MY23fP9h4gvOjL_I7-0`;
+  //   firebase.database().ref("musings/" + userId);
+  //   // dbRef.("musings").remove();
+  //   console.log('clicked!')
+  // }
+
+
+  // console.log(props.musingState[1].musing[0]);
+  // props.musingState.map((x) => console.log(x.musing[0]));
+
   const handleEdit = (e) => {
     const userId = `-MY23fP9h4gvOjL_I7-0`;
     // firebase
@@ -62,6 +84,14 @@ function Musings(props) {
               {/*  */}
               <div className="musingNav">
                 <FontAwesomeIcon icon={faSmile} className="navMood" />
+
+
+            <section className="moodMeter">
+              <FontAwesomeIcon icon={faSmile} />
+              <FontAwesomeIcon icon={faEdit} />
+              <FontAwesomeIcon icon={faTrashAlt} onClick={ () => props.removeMusing(props.musings) }/>
+              <FontAwesomeIcon icon={faBookmark} />
+            </section>
 
                 <div onClick={handleEdit} id={item.key}>
                   <FontAwesomeIcon icon={faEdit} className="navButton" />
