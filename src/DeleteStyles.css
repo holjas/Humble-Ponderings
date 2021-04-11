@@ -13,7 +13,15 @@
   --letterSpacingHeadline: 6px;
   --letterSpacingMain: 1.5px;
 }
-
+/* DELETE #grin ..... was just testing the capture */
+#grin {
+  font-size: 3rem;
+}
+#grin:hover {
+  cursor: pointer;
+  color: hotpink;
+}
+/*  */
 .musingContainer {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -21,7 +29,6 @@
   row-gap: 20px;
   column-gap: 40px;
 }
-
 .musingCard {
   display: flex;
   flex-direction: column;
@@ -31,23 +38,58 @@
 }
 .musingHeadline {
   width: 100%;
+  height: 40px;
+  line-height: 35px;
   background-color: var(--primary1);
   text-align: left;
+  padding-left: 20px;
 }
-.musingCard p {
+.musingTextBox {
+  width: 100%;
+  padding: 20px;
+  line-height: 130%;
+}
+.musingTextBox p:first-child {
+  padding-bottom: 20px;
+}
+.musingTextBox p:nth-child(2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 .textEmphasis {
-  /* margin-top: 30px; */
   text-transform: uppercase;
   font-weight: bold;
 }
 .musingCard h4 {
-  /* can margin be 0 universally???? */
-  margin: 0;
   color: var(--primary3);
 }
-.moodMeter {
-  background-color: cadetblue;
+.musingNav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 35px;
+}
+.navMood {
+  font-size: 1.8rem;
+  color: var(--primary1);
+}
+.navButton {
+  font-size: 1.8rem;
+  transition: 0.3s;
+  color: var(--primary2);
+}
+.navButton:hover,
+.navButton:focus {
+  cursor: pointer;
+  transform: scale(1.2);
+  color: var(--primary1);
+}
+.textBoxEdit {
+  display: none;
 }
 /*  */
 /*  */
@@ -61,7 +103,28 @@
 /*  */
 /*  */
 /*  */
+/*  */
+/* header component start */
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.headerImageContainer {
+  width: 500px;
+}
+.headerImageContainer img {
+  width: 100%;
+}
+.header h1 {
+  letter-spacing: 15px;
+  padding-bottom: 20px;
+}
+/* header component end */
+/*  */
 /* footer start */
+
 footer,
 .footerCreatedText {
   display: flex;
@@ -81,10 +144,11 @@ footer,
 .footerCreatedText {
   width: 100%;
   align-items: center;
+  min-height: 3rem;
 }
 .footerSmallContainer h2 {
-  font-family: var(--fontHeadline);
   letter-spacing: var(--letterSpacingHeadline);
+  padding-bottom: 20px;
 }
 .footerSmallContainer h3 {
   font-family: var(--fontMain);
