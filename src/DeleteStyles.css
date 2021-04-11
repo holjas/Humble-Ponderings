@@ -45,6 +45,7 @@
   padding-left: 20px;
 }
 .musingTextBox {
+  width: 100%;
   padding: 20px;
   line-height: 130%;
 }
@@ -72,14 +73,6 @@
   align-items: center;
   padding-top: 35px;
 }
-/* .musingNav svg {
-  
-  color: red;
-} */
-/* .musingNav svg:nth-child(1) {
-  color: var(--primary1);
-  color: blue;
-} */
 .navMood {
   font-size: 1.8rem;
   color: var(--primary1);
@@ -94,6 +87,9 @@
   cursor: pointer;
   transform: scale(1.2);
   color: var(--primary1);
+}
+.textBoxEdit {
+  display: none;
 }
 /*  */
 /*  */

@@ -12,19 +12,26 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Musings(props) {
   const handleEdit = (e) => {
-    //onclick, grab the user input text
-    // const dbRef = firebase.database();
-    const userId = `-MY18GTHtDlP_yYGnRXh`;
-    // firebase.database().ref(`${userId}`).set("WORDS");
-    firebase
-      .database()
-      .ref("musings/" + userId)
-      .set({
-        1: "this is one",
-        2: "TRY TO TARGET THIS",
-        3: "this is three",
-      });
+    // const userId = `-MY18GTHtDlP_yYGnRXh`;
+    // firebase
+    //   .database()
+    //   .ref("musings/" + userId)
+    //   .set({
+    //     1: "this is one",
+    //     2: "TRY TO TARGET THIS",
+    //     3: "this is three",
+    //   });
+    // console.log(e.currentTarget.id);
+    // const targetedId = e.currentTarget.id;
+    const targetedId = e.currentTarget.parentNode.parentNode.children[1];
+    const targetedArea = document.getElementById(targetedId);
+    targetedId.style.backgroundColor = "red";
+    // console.log(e.currentTarget.parentNode.parentNode.children[1]);
   };
+
+  // const openTextBox = () => {
+  //   const textBoxArea = document.getElementById("textBoxArea");
+  // };
 
   return (
     <section className="musingContainer warpperThick">
@@ -37,13 +44,26 @@ function Musings(props) {
 
             <div className="musingTextBox">
               <p className="textEmphasis">{item.musing[1]}</p>
-              <p>{item.musing[2]}</p>
-              {/* <p>mood={item.musing[4]}</p> */}
+              <p id="textBoxDisplay">{item.musing[2]}</p>
+              {/*  */}
+              {/*  */}
+              <form action="submit" id="textBoxEdit" className="textBoxEdit">
+                <label htmlFor="editMusing">edit here</label>
+                <input
+                  // type="text"
+                  id="editMusing"
+                  // // onChange={handleChange}
+                  // // value={userInput}
+                />
 
+                <button>edit button</button>
+              </form>
+              {/*  */}
+              {/*  */}
               <div className="musingNav">
                 <FontAwesomeIcon icon={faSmile} className="navMood" />
 
-                <div onClick={handleEdit} key={item.key}>
+                <div onClick={handleEdit} id={item.key}>
                   <FontAwesomeIcon icon={faEdit} className="navButton" />
                 </div>
                 <div>
