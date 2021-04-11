@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Playfair+Display&display=swap");
+
+:root {
+  --primary1: #463e2a;
+  --primary2: #b5b3ad;
+  --primary3: #eeebe3;
+  --accent1: #eeb4a2;
+  --accent2: #e28061;
+  --black: #121212;
+  --white: #f1f1f1;
+  --fontHeadline: "Playfair Display", serif;
+  --fontMain: "Montserrat", sans-serif;
+  --letterSpacingHeadline: 6px;
+  --letterSpacingMain: 1.5px;
+}
+
+.musingContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  row-gap: 20px;
+  column-gap: 40px;
+}
+
+.musingCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border: 8px solid var(--primary1);
+}
+.musingHeadline {
+  width: 100%;
+  background-color: var(--primary1);
+  text-align: left;
+}
+.musingCard p {
+}
+.textEmphasis {
+  /* margin-top: 30px; */
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.musingCard h4 {
+  /* can margin be 0 universally???? */
+  margin: 0;
+  color: var(--primary3);
+}
+.moodMeter {
+  background-color: cadetblue;
+}
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/* footer start */
+footer,
+.footerCreatedText {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: var(--primary1);
+  color: var(--primary3);
+}
+.footerSmallContainer {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.footerCreatedText {
+  width: 100%;
+  align-items: center;
+}
+.footerSmallContainer h2 {
+  font-family: var(--fontHeadline);
+  letter-spacing: var(--letterSpacingHeadline);
+}
+.footerSmallContainer h3 {
+  font-family: var(--fontMain);
+  text-transform: capitalize;
+  letter-spacing: var(--letterSpacingMain);
+  padding-left: 20px;
+}
+.footerSmallContainer svg {
+  font-size: 1.8rem;
+  margin: 10px;
+}
+.footerSmallContainer a,
+.footerSmallContainer a:visited {
+  color: var(--primary3);
+  transition: 0.3s;
+}
+.footerSmallContainer a:hover,
+.footerSmallContainer a:focus {
+  transform: scale(1.2);
+}
+.footerCreatedText img {
+  width: 40px;
+  border-radius: 3px;
+}
+/* footer end */
