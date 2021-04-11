@@ -15,14 +15,14 @@ function Musings(props) {
     objectKey.sort((a, b) => {
       return b - a;
     });
-    console.log(stuff[item]);
+    // console.log(stuff[item]);
   }
 
   // console.log(props.musingState[1].musing[0]);
   // props.musingState.map((x) => console.log(x.musing[0]));
 
   return (
-    <>
+    <section className="musingContainer warpperThick">
       {props.musingState.map((item) => {
         return (
           <div className="musingCard" key={item.key}>
@@ -30,19 +30,22 @@ function Musings(props) {
               <h4>{item.musing[3]}</h4>
             </div>
 
-            <p className="textEmphasis">{item.musing[1]}</p>
-            <p>{item.musing[2]}</p>
+            <div className="musingTextBox">
+              <p className="textEmphasis">{item.musing[1]}</p>
+              <p>{item.musing[2]}</p>
+              {/* <p>mood={item.musing[4]}</p> */}
 
-            <section className="moodMeter">
-              <FontAwesomeIcon icon={faSmile} />
-              <FontAwesomeIcon icon={faEdit} />
-              <FontAwesomeIcon icon={faTrashAlt} />
-              <FontAwesomeIcon icon={faBookmark} />
-            </section>
+              <div className="musingNav">
+                <FontAwesomeIcon icon={faSmile} />
+                <FontAwesomeIcon icon={faEdit} />
+                <FontAwesomeIcon icon={faTrashAlt} />
+                <FontAwesomeIcon icon={faBookmark} />
+              </div>
+            </div>
           </div>
         );
       })}
-    </>
+    </section>
   );
 }
 
