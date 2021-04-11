@@ -12,6 +12,7 @@ function App() {
   const [displayPrompts, setDisplayPrompts] = useState("");
   const [userInput, setUserInput] = useState("");
   const [musings, setMusings] = useState([]);
+  const [countMusings, setCountMusings] = useState(1);
 
   //grab date and time
   const dateTimeFunction = () => {
@@ -26,7 +27,6 @@ function App() {
   const handleChange = (event) => {
     setUserInput(event.target.value);
   };
-
   //submits the input to the database
   const handleClick = (e) => {
     e.preventDefault();
@@ -34,8 +34,9 @@ function App() {
 
     const dateTime = dateTimeFunction();
 
-    dbRef.push([displayPrompts, userInput, dateTime]);
+    dbRef.push([countMusings, displayPrompts, userInput, dateTime]);
     setUserInput("");
+    setCountMusings(countMusings + 1);
   };
 
   //button to generate random prompt
@@ -109,9 +110,9 @@ function App() {
         <button onClick={handleRandom}>generate a new prompt</button>
       </form>
 
-      <div className="musingContainer wrapper">
+      <section className="musingContainer wrapper">
         <Musings musingState={musings} />
-      </div>
+      </section>
 
       <Footer />
     </div>

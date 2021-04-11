@@ -21,6 +21,7 @@
   row-gap: 20px;
   column-gap: 40px;
 }
+
 .musingCard {
   display: flex;
   flex-direction: column;
@@ -30,7 +31,6 @@
 }
 .musingHeadline {
   width: 100%;
-  /* margin-bottom: 30px; */
   background-color: var(--primary1);
   text-align: left;
 }
