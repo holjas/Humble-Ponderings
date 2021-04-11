@@ -7,11 +7,18 @@ import { useState, useEffect } from "react";
 import Musings from "./Musings";
 import Footer from "./Footer";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGrin } from '@fortawesome/free-solid-svg-icons'
+// import { faAngry } from '@fortawesome/free-solid-svg-icons'
+// import { faDizzy } from '@fortawesome/free-solid-svg-icons'
+
+
 function App() {
   const [prompts, setPrompts] = useState([]);
   const [displayPrompts, setDisplayPrompts] = useState("");
   const [userInput, setUserInput] = useState("");
   const [musings, setMusings] = useState([]);
+  const [mood, setMood] = useState('');
   const [countMusings, setCountMusings] = useState(1);
 
   //grab date and time
@@ -33,8 +40,7 @@ function App() {
     const dbRef = firebase.database().ref().child("musings");
 
     const dateTime = dateTimeFunction();
-
-    dbRef.push([countMusings, displayPrompts, userInput, dateTime]);
+    dbRef.push([countMusings, displayPrompts, userInput, dateTime, mood]);
     setUserInput("");
     setCountMusings(countMusings + 1);
   };
@@ -54,6 +60,22 @@ function App() {
     }
   }
 
+  //submits selected mood to the database
+  const handleMood = (e) => {
+    const selectedMood=(e.target.id)
+    setMood(selectedMood);
+  }
+
+
+  //toggle display once user has entered information
+  function toggleDisplay(e) {
+    if (e.target.className === "show") {
+      e.target.className = "hidden";
+    } else {
+      e.target.className = "show";
+    }
+  }
+
   //grabs from database on mount
   useEffect(() => {
     const dbRef = firebase.database().ref();
@@ -62,6 +84,8 @@ function App() {
       const newPromptsState = [];
       const responseMusings = response.val().musings;
       const newMusingsState = [];
+      // const responseMood = response.val().mood;
+      // const newMoodState = [];
 
       //setting prompts into prompt state
       for (const key in responsePrompts) {
@@ -94,18 +118,23 @@ function App() {
     <div className="App">
       <h1>Humble Ponderings</h1>
       <h3>Get your thoughts out, Get your feels out</h3>
-      <h2 className="show" onClick={toggleDisplay}>
-        {displayPrompts}
-      </h2>
-
-      <form action="submit">
-        <label htmlFor="newMusings">Put a thought there</label>
-        <input
-          type="text"
-          id="newMusings"
-          onChange={handleChange}
-          value={userInput}
-        />
+        <h2 className="show" onClick={toggleDisplay}>
+          {displayPrompts}
+        </h2>
+        <p>{mood}</p>
+        <form action="submit">
+          <label htmlFor="newMusings">Put a thought there</label>
+          <input
+            type="text"
+            id="newMusings"
+            onChange={handleChange}
+            value={userInput}
+          />
+        <div>
+          <FontAwesomeIcon icon={faGrin} onClick={handleMood} value="grin" id="grin"/>
+          {/* <li onClick={handleMood} value="angry"><FontAwesomeIcon icon={faAngry} /></li>
+          <li onClick={handleMood} value="dizzy"><FontAwesomeIcon icon={faDizzy} /></li> */}
+        </div>
         <button onClick={handleClick}>im a button</button>
         <button onClick={handleRandom}>generate a new prompt</button>
       </form>
