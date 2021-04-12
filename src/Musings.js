@@ -9,7 +9,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Musings(props) {
-  //remove musing
+  //remove/delete musing
   const handleRemoveMusing = (e) => {
     const targetKey = e.currentTarget.id;
     firebase
@@ -19,32 +19,13 @@ function Musings(props) {
   };
   //edit musing, opens the textarea window to make changes
   const handleEdit = (e) => {
-    const targetedId = e.currentTarget.parentNode.parentNode.children[1]; //target the musing
-    targetedId.style.display = "none"; //hide the musing
-    const editForm = e.currentTarget.parentNode.parentNode.children[2]; //target the edit box
+    const targetedId = e.currentTarget.parentNode.parentNode.children[1];
+    targetedId.style.display = "none";
+    const editForm = e.currentTarget.parentNode.parentNode.children[2];
     editForm.style.display = "flex";
-
-    // const targetKey = e.currentTarget.id;
-    // firebase
-    //   .database()
-    //   .ref("musings/" + targetKey)
-    //   .set({
-    //     1: "this is one",
-    //     2: "TRY TO TARGET THIS",
-    //     3: "this is three",
-    //   });
-    //console.log(e.currentTarget.id); //this captures our key
-    // const targetedId = e.currentTarget.id;
-
-    // console.log(e.currentTarget.parentNode.parentNode.children);
-    // targetedId.style.color = "red";
-
-    // console.log(e.currentTarget.parentNode.parentNode.children[1]);
   };
   //edit musing save button/ send changes to firebse
-  const handleSaveEdit = (itemKey, prompt, dateTime, editMusing) => {
-    // const editMusing = e.currentTarget.parentNode[0].value;
-    // console.log(e.currentTarget.parentNode.parentNode.value);
+  const handleSaveEdit = (itemKey, prompt, dateTime, editMusing, event) => {
     firebase
       .database()
       .ref("musings/" + itemKey)
@@ -53,23 +34,19 @@ function Musings(props) {
         1: editMusing,
         2: dateTime,
       });
-    console.log("PROMPT", prompt);
-    console.log("DATETIME", dateTime);
-    console.log("EDIT MUSING", editMusing);
+    handleThis(event);
   };
-  //captures the text input values
-  // const handleChange = (event) => {
-  //   event.target.value = "CHANGE BY ME";
-  //   // console.log(event.target.value);
-  // };
+  //hide the edit textform and retun to the regular card view
+  const handleThis = (e) => {
+    const targetedId = e.currentTarget.parentNode.parentNode.children[1];
+    targetedId.style.display = "block";
+    const editForm = e.currentTarget.parentNode.parentNode.children[2];
+    editForm.style.display = "none";
+  };
 
   return (
     <section className="musingContainer warpperThick">
       {props.musingState.map((item) => {
-        // console.log(item.musing[1]);
-        // console.log(item.musing[2]);
-        // console.log(item.musing[3]);
-
         return (
           <div className="musingCard" key={item.key}>
             <div className="musingHeadline">
@@ -101,7 +78,8 @@ function Musings(props) {
                       item.key,
                       item.musing[0],
                       item.musing[2],
-                      e.currentTarget.parentNode[0].value
+                      e.currentTarget.parentNode[0].value,
+                      e
                     );
                   }}
                 >
@@ -109,10 +87,9 @@ function Musings(props) {
                 </button>
               </form>
               {/*  */}
-              {/*  */}
+              {/* card nav bar, with edit/delete/bookmark */}
               <div className="musingNav">
                 <FontAwesomeIcon icon={faSmile} className="navMood" />
-
                 <div onClick={handleEdit} id={item.key}>
                   <FontAwesomeIcon icon={faEdit} className="navButton" />
                 </div>
