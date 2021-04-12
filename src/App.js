@@ -9,9 +9,16 @@ import Musings from "./Musings";
 import Footer from "./Footer";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGrin } from "@fortawesome/free-solid-svg-icons";
-// import { faAngry } from '@fortawesome/free-solid-svg-icons'
-// import { faDizzy } from '@fortawesome/free-solid-svg-icons'
+import {
+  faGrinAlt,
+  faGrinHearts,
+  faGrinStars,
+  faMehRollingEyes,
+  faAngry,
+  faDizzy,
+  faTired,
+  faSadCry,
+} from "@fortawesome/free-regular-svg-icons";
 
 function App() {
   const [prompts, setPrompts] = useState([]);
@@ -66,6 +73,15 @@ function App() {
     const selectedMood = e.target.id;
     setMood(selectedMood);
   };
+
+  // remove musing
+  const removeMusing = (props) => {
+    const userId = `-MY23fP9h4gvOjL_I7-0`;
+    firebase.database().ref("musings/" + userId);
+    // dbRef.("musings").remove();
+    console.log("clicked!");
+  };
+
   //grabs from database on mount
   useEffect(() => {
     const dbRef = firebase.database().ref();
@@ -120,15 +136,72 @@ function App() {
           onChange={handleChange}
           value={userInput}
         />
-        <div>
-          <FontAwesomeIcon
-            icon={faGrin}
-            onClick={handleMood}
-            value="grin"
-            id="grin"
-          />
-          {/* <li onClick={handleMood} value="angry"><FontAwesomeIcon icon={faAngry} /></li>
-          <li onClick={handleMood} value="dizzy"><FontAwesomeIcon icon={faDizzy} /></li> */}
+        <p className="moodText">Add a feel</p>
+        <div className="moodWrapper">
+          <div className="mood">
+            <FontAwesomeIcon
+              icon={faGrinAlt}
+              onClick={handleMood}
+              value="happy"
+              id="happy"
+            />
+          </div>
+          <div className="mood">
+            <FontAwesomeIcon
+              icon={faGrinHearts}
+              onClick={handleMood}
+              value="love"
+              id="love"
+            />
+          </div>
+          <div className="mood">
+            <FontAwesomeIcon
+              icon={faGrinStars}
+              onClick={handleMood}
+              value="excited"
+              id="excited"
+            />
+          </div>
+          <div className="mood">
+            <FontAwesomeIcon
+              icon={faMehRollingEyes}
+              onClick={handleMood}
+              value="whatever"
+              id="whatever"
+            />
+          </div>
+          <div className="mood">
+            <FontAwesomeIcon
+              icon={faAngry}
+              onClick={handleMood}
+              value="angry"
+              id="angry"
+            />
+          </div>
+          <div className="mood">
+            <FontAwesomeIcon
+              icon={faDizzy}
+              onClick={handleMood}
+              value="shocked"
+              id="shocked"
+            />
+          </div>
+          <div className="mood">
+            <FontAwesomeIcon
+              icon={faTired}
+              onClick={handleMood}
+              value="tired"
+              id="tired"
+            />
+          </div>
+          <div className="mood">
+            <FontAwesomeIcon
+              icon={faSadCry}
+              onClick={handleMood}
+              value="Sad"
+              id="sad"
+            />
+          </div>
         </div>
         <button onClick={handleClick}>im a button</button>
         <button onClick={handleRandom}>generate a new prompt</button>
