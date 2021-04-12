@@ -101,9 +101,12 @@
   left: -999;
 }
 .textBoxEdit button {
-  /* width: 100%; */
+  width: 50%;
   font-size: 1rem;
   margin: 0;
+}
+.textBoxEdit textarea {
+  margin-bottom: 10px;
 }
 textarea {
   outline: none;

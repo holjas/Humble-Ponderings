@@ -368,19 +368,21 @@ p {
 button {
   color: var(--white);
   background: var(--primary1);
-  border: 1px solid var(--primary3);
   cursor: pointer;
   font-family: var(--fontHeadline);
   font-size: 1.55rem;
   font-weight: bold;
+  border: transparent;
   height: auto;
   margin: 10px;
   padding: 20px 10px;
   text-transform: uppercase;
   width: 15vw;
+  transition: 0.3s;
 }
 
 button:focus,
 button:hover {
-  border: 2px solid white;
+  border: transparent;
+  transform: scale(1.05);
 }

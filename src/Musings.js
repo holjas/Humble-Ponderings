@@ -34,9 +34,10 @@ function Musings(props) {
     // const targetedId = e.currentTarget.id;
     const targetedId = e.currentTarget.parentNode.parentNode.children[1]; //target the musing
     targetedId.style.display = "none"; //hide the musing
-    const editForm = document.getElementById("textBoxEdit");
+    // console.log(e.currentTarget.parentNode.parentNode.children);
+    // targetedId.style.color = "red";
+    const editForm = e.currentTarget.parentNode.parentNode.children[2]; //target the edit box
     editForm.style.display = "flex";
-    const targetedArea = document.getElementById(targetedId);
 
     // console.log(e.currentTarget.parentNode.parentNode.children[1]);
   };
@@ -64,10 +65,9 @@ function Musings(props) {
                   edit musing here
                 </label>
                 <textarea
-                  type="textarea"
+                  type="text"
                   id="editMusing"
                   // // onChange={handleChange}
-                  // // value={userInput}
                   value={item.musing[2]}
                 />
 
