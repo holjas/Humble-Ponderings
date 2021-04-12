@@ -9,7 +9,6 @@ import Prompts from "./Prompts";
 import Musings from "./Musings";
 import Footer from "./Footer";
 
-
 function App() {
   const [prompts, setPrompts] = useState([]);
   const [displayPrompts, setDisplayPrompts] = useState("");
@@ -55,9 +54,10 @@ function App() {
 
   return (
     <div className="App appWrapper">
+      <p>DELETETHIS{(displayPrompts, prompts)}</p>
       <Header />
 
-      <Prompts />
+      <Prompts prompts={prompts} />
 
       <Musings musingState={musings} />
 

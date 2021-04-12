@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 import firebase from "./firebase";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGrinAlt,
@@ -13,14 +13,13 @@ import {
   faSadCry,
 } from "@fortawesome/free-regular-svg-icons";
 
-function Prompts() {
-  const [prompts, setPrompts] = useState([]);
+function Prompts(props) {
+  // const [prompts, setPrompts] = useState([]);
   const [displayPrompts, setDisplayPrompts] = useState("");
   const [userInput, setUserInput] = useState("");
-  const [musings, setMusings] = useState([]);
+  // const [musings, setMusings] = useState([]);
   const [mood, setMood] = useState("");
   const [countMusings, setCountMusings] = useState(1);
-
 
   //grab date and time
   const dateTimeFunction = () => {
@@ -50,8 +49,8 @@ function Prompts() {
   //button to generate random prompt
   const handleRandom = (e) => {
     e.preventDefault();
-    const promptLength = prompts.length;
-    setDisplayPrompts(prompts[randomNumber(promptLength)]);
+    const promptLength = props.prompts.length;
+    setDisplayPrompts(props.prompts[randomNumber(promptLength)]);
   };
   //toggle display once user has entered information
   function toggleDisplay(e) {
@@ -74,11 +73,10 @@ function Prompts() {
     return number;
   };
 
-
   return (
     <>
       <h2 className="show" onClick={toggleDisplay}>
-      {displayPrompts}
+        {displayPrompts}
       </h2>
       <h3>{mood}</h3>
       <form action="submit">
@@ -91,76 +89,51 @@ function Prompts() {
         />
         <p className="moodText">Add a feel</p>
         <div className="moodWrapper">
-          <div className="mood" 
-              onClick={handleMood}
-              value="happy"
-              id="happy">
-            <FontAwesomeIcon
-              icon={faGrinAlt}
-            />
+          <div className="mood" onClick={handleMood} value="happy" id="happy">
+            <FontAwesomeIcon icon={faGrinAlt} />
           </div>
-          <div className="mood"
-              onClick={handleMood}
-              value="love"
-              id="love">
-            <FontAwesomeIcon
-              icon={faGrinHearts}
-            />
+          <div className="mood" onClick={handleMood} value="love" id="love">
+            <FontAwesomeIcon icon={faGrinHearts} />
           </div>
-          <div className="mood"
-          onClick={handleMood}
-          value="excited"
-          id="excited">
-            <FontAwesomeIcon
-              icon={faGrinStars}
-            />
+          <div
+            className="mood"
+            onClick={handleMood}
+            value="excited"
+            id="excited"
+          >
+            <FontAwesomeIcon icon={faGrinStars} />
           </div>
-          <div className="mood"
-              onClick={handleMood}
-              value="whatever"
-              id="whatever">
-            <FontAwesomeIcon
-              icon={faMehRollingEyes}
-            />
+          <div
+            className="mood"
+            onClick={handleMood}
+            value="whatever"
+            id="whatever"
+          >
+            <FontAwesomeIcon icon={faMehRollingEyes} />
           </div>
-          <div className="mood"
-                onClick={handleMood}
-                value="angry"
-                id="angry">
-            <FontAwesomeIcon
-              icon={faAngry}
-            />
+          <div className="mood" onClick={handleMood} value="angry" id="angry">
+            <FontAwesomeIcon icon={faAngry} />
           </div>
-          <div className="mood"
-              onClick={handleMood}
-              value="shocked"
-              id="shocked">
-            <FontAwesomeIcon
-              icon={faDizzy}
-            />
+          <div
+            className="mood"
+            onClick={handleMood}
+            value="shocked"
+            id="shocked"
+          >
+            <FontAwesomeIcon icon={faDizzy} />
           </div>
-          <div className="mood"
-              onClick={handleMood}
-              value="tired"
-              id="tired">
-            <FontAwesomeIcon
-              icon={faTired}
-            />
+          <div className="mood" onClick={handleMood} value="tired" id="tired">
+            <FontAwesomeIcon icon={faTired} />
           </div>
-          <div className="mood"
-              onClick={handleMood}
-              value="Sad"
-              id="sad">
-            <FontAwesomeIcon
-              icon={faSadCry}
-            />
+          <div className="mood" onClick={handleMood} value="Sad" id="sad">
+            <FontAwesomeIcon icon={faSadCry} />
           </div>
         </div>
         <button onClick={handleClick}>im a button</button>
         <button onClick={handleRandom}>generate a new prompt</button>
       </form>
     </>
-  )
+  );
 }
 
-export default Prompts
+export default Prompts;
