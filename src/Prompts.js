@@ -14,22 +14,15 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 
 function Prompts(props) {
-
-  // const [prompts, setPrompts] = useState([]);
   const [displayPrompts, setDisplayPrompts] = useState("");
   const [userInput, setUserInput] = useState("");
-  // const [musings, setMusings] = useState([]);
   const [mood, setMood] = useState("");
-  const [countMusings, setCountMusings] = useState(1);
-  // const newPromptsState = [];
-  
 
+  //set the first prompt with a random selection
   useEffect(() => {
-    //set the first prompt with a random selection
     const promptLength = props.prompts.length;
     setDisplayPrompts(props.prompts[randomNumber(promptLength)]);
-    
-  }, [props])
+  }, [props]);
 
   //grab date and time
   const dateTimeFunction = () => {
@@ -50,12 +43,10 @@ function Prompts(props) {
     const dbRef = firebase.database().ref().child("musings");
 
     const dateTime = dateTimeFunction();
-    dbRef.push([countMusings, displayPrompts, userInput, dateTime, mood]);
+    dbRef.push([displayPrompts, userInput, dateTime, mood]);
     setUserInput("");
     setMood("");
-    setCountMusings(countMusings + 1);
   };
-
   //button to generate random prompt
   const handleRandom = (e) => {
     e.preventDefault();
@@ -70,13 +61,11 @@ function Prompts(props) {
       e.target.className = "show";
     }
   }
-
   //submits selected mood to the database
   const handleMood = (e) => {
     const selectedMood = e.target.id;
     setMood(selectedMood);
   };
-
   //generate a random number
   const randomNumber = (length) => {
     const number = Math.floor(Math.random() * length);

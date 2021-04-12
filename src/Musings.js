@@ -1,4 +1,4 @@
-// import firebase from "./firebase";
+import firebase from "./firebase";
 import {
   faBookmark,
   faEdit,
@@ -9,41 +9,58 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Musings(props) {
-  // // remove musing
-  // const removeMusing = (props) => {
-  //   const userId = `-MY23fP9h4gvOjL_I7-0`;
-  //   firebase.database().ref("musings/" + userId);
-  //   // dbRef.("musings").remove();
-  //   console.log('clicked!')
-  // }
-
-  // console.log(props.musingState[1].musing[0]);
-  // props.musingState.map((x) => console.log(x.musing[0]));
-
+  //remove musing
+  const handleRemoveMusing = (e) => {
+    const targetKey = e.currentTarget.id;
+    firebase
+      .database()
+      .ref("musings/" + targetKey)
+      .remove();
+  };
+  //edit musing, opens the textarea window to make changes
   const handleEdit = (e) => {
-    // const userId = `-MY23fP9h4gvOjL_I7-0`;
+    const targetedId = e.currentTarget.parentNode.parentNode.children[1]; //target the musing
+    targetedId.style.display = "none"; //hide the musing
+    const editForm = e.currentTarget.parentNode.parentNode.children[2]; //target the edit box
+    editForm.style.display = "flex";
+
+    // const targetKey = e.currentTarget.id;
     // firebase
     //   .database()
-    //   .ref("musings/" + userId)
+    //   .ref("musings/" + targetKey)
     //   .set({
     //     1: "this is one",
     //     2: "TRY TO TARGET THIS",
     //     3: "this is three",
     //   });
-    // console.log(e.currentTarget.id);
+    //console.log(e.currentTarget.id); //this captures our key
     // const targetedId = e.currentTarget.id;
-    const targetedId = e.currentTarget.parentNode.parentNode.children[1]; //target the musing
-    targetedId.style.display = "none"; //hide the musing
+
     // console.log(e.currentTarget.parentNode.parentNode.children);
     // targetedId.style.color = "red";
-    const editForm = e.currentTarget.parentNode.parentNode.children[2]; //target the edit box
-    editForm.style.display = "flex";
 
     // console.log(e.currentTarget.parentNode.parentNode.children[1]);
   };
+  //edit musing save button/ send changes to firebse
+  const handleSaveEdit = (e) => {
+    e.preventDefault();
+    // const editMusing = e.target.parentNode[0].value);
+    const targetKey = e.currentTarget.parentNode;
+    console.log(targetKey);
 
-  // const openTextBox = (area) => {
-  //   const textBoxArea = document.getElementById("textBoxArea");
+    // firebase
+    //   .database()
+    //   .ref("musings/" + targetKey)
+    //   .set({
+    //     1: "this is one",
+    //     2: "TRY TO TARGET THIS",
+    //     3: "this is three",
+    //   });
+  };
+  //captures the text input values
+  // const handleChange = (event) => {
+  //   event.target.value = "CHANGE BY ME";
+  //   // console.log(event.target.value);
   // };
 
   return (
@@ -52,12 +69,12 @@ function Musings(props) {
         return (
           <div className="musingCard" key={item.key}>
             <div className="musingHeadline">
-              <h4>{item.musing[3]}</h4>
+              <h4>{item.musing[2]}</h4>
             </div>
 
             <div className="musingTextBox">
-              <p className="textEmphasis">{item.musing[1]}</p>
-              <p id="textBoxDisplay">{item.musing[2]}</p>
+              <p className="textEmphasis">{item.musing[0]}</p>
+              <p id="textBoxDisplay">{item.musing[1]}</p>
               {/*  */}
               {/*  */}
               <form action="submit" id="textBoxEdit" className="textBoxEdit">
@@ -67,11 +84,10 @@ function Musings(props) {
                 <textarea
                   type="text"
                   id="editMusing"
-                  // // onChange={handleChange}
-                  value={item.musing[2]}
+                  defaultValue={item.musing[1]}
                 />
 
-                <button>save changes</button>
+                <button onClick={handleSaveEdit}>save changes</button>
               </form>
               {/*  */}
               {/*  */}
@@ -81,11 +97,11 @@ function Musings(props) {
                 <div onClick={handleEdit} id={item.key}>
                   <FontAwesomeIcon icon={faEdit} className="navButton" />
                 </div>
-                <div>
+                <div onClick={handleRemoveMusing} id={item.key}>
                   <FontAwesomeIcon
                     icon={faTrashAlt}
                     className="navButton"
-                    onClick={() => props.removeMusing(props.musings)}
+                    // onClick={() => props.removeMusing(props.musings)}
                   />
                 </div>
                 <div>
