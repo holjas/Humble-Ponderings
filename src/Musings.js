@@ -21,8 +21,10 @@ function Musings(props) {
   const handleEdit = (e) => {
     const targetedId = e.currentTarget.parentNode.parentNode.children[1]; //target the musing
     targetedId.style.display = "none"; //hide the musing
+    console.log(targetedId);
     const editForm = e.currentTarget.parentNode.parentNode.children[2]; //target the edit box
     editForm.style.display = "flex";
+    console.log(editForm);
 
     // const targetKey = e.currentTarget.id;
     // firebase
@@ -41,43 +43,50 @@ function Musings(props) {
 
     // console.log(e.currentTarget.parentNode.parentNode.children[1]);
   };
-  //edit musing save button/ send changes to firebse
-  const handleSaveEdit = (e) => {
-    e.preventDefault();
-    // const editMusing = e.target.parentNode[0].value);
-    const targetKey = e.currentTarget.parentNode;
-    console.log(targetKey);
 
-    // firebase
-    //   .database()
-    //   .ref("musings/" + targetKey)
-    //   .set({
-    //     1: "this is one",
-    //     2: "TRY TO TARGET THIS",
-    //     3: "this is three",
-    //   });
+  //edit musing save button/ send changes to firebse
+  const handleSaveEdit = (itemKey, prompt, dateTime, editMusing) => {
+    // const editMusing = e.currentTarget.parentNode[0].value;
+    // console.log(e.currentTarget.parentNode.parentNode.value);
+    firebase
+      .database()
+      .ref("musings/" + itemKey)
+      .set({
+        0: prompt,
+        1: editMusing,
+        2: dateTime,
+      });
+    console.log("PROMPT", prompt);
+    console.log("DATETIME", dateTime);
+    console.log("EDIT MUSING", editMusing);
+    handleCloseEdit();
   };
-  //captures the text input values
-  // const handleChange = (event) => {
-  //   event.target.value = "CHANGE BY ME";
-  //   // console.log(event.target.value);
-  // };
+  const handleCloseEdit = () => {
+    console.log("JUST LOGING");
+  };
 
   return (
     <section className="musingContainer warpperThick">
       {props.musingState.map((item) => {
+        // console.log(item.musing[1]);
+        // console.log(item.musing[2]);
+        // console.log(item.musing[3]);
+
         return (
           <div className="musingCard" key={item.key}>
             <div className="musingHeadline">
+              {/* displays time musing was submitted*/}
               <h4>{item.musing[2]}</h4>
             </div>
 
             <div className="musingTextBox">
+              {/* displays writing prompt */}
               <p className="textEmphasis">{item.musing[0]}</p>
-              <p id="textBoxDisplay">{item.musing[1]}</p>
-              {/*  */}
-              {/*  */}
-              <form action="submit" id="textBoxEdit" className="textBoxEdit">
+              {/* displays previously entered musing */}
+              <p>{item.musing[1]}</p>
+
+              {/*form is hidden and will appear will 'edit' it selected start*/}
+              <form action="submit" id={item.key} className="textBoxEdit">
                 <label htmlFor="editMusing" className="visually-hidden">
                   edit musing here
                 </label>
@@ -87,22 +96,24 @@ function Musings(props) {
                   defaultValue={item.musing[1]}
                 />
 
-                <button onClick={handleSaveEdit}>save changes</button>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleSaveEdit(item.key, item.musing[0], item.musing[2]);
+                  }}
+                >
+                  save changes
+                </button>
               </form>
-              {/*  */}
+              {/* form (hidden) end  */}
               {/*  */}
               <div className="musingNav">
                 <FontAwesomeIcon icon={faSmile} className="navMood" />
-
                 <div onClick={handleEdit} id={item.key}>
                   <FontAwesomeIcon icon={faEdit} className="navButton" />
                 </div>
                 <div onClick={handleRemoveMusing} id={item.key}>
-                  <FontAwesomeIcon
-                    icon={faTrashAlt}
-                    className="navButton"
-                    // onClick={() => props.removeMusing(props.musings)}
-                  />
+                  <FontAwesomeIcon icon={faTrashAlt} className="navButton" />
                 </div>
                 <div>
                   <FontAwesomeIcon icon={faBookmark} className="navButton" />

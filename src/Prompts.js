@@ -63,8 +63,16 @@ function Prompts(props) {
   }
   //submits selected mood to the database
   const handleMood = (e) => {
-    const selectedMood = e.target.id;
-    setMood(selectedMood);
+    const selectedMood = e.target.parentNode.parentNode.id;
+    const parentSelectedMood = e.target.parentNode.id;
+    console.log("selected", selectedMood);
+    console.log("parent", parentSelectedMood);
+    if (selectedMood) {
+      console.log("selectedmood is true");
+    } else {
+      console.log("selectedmood is not ture");
+    }
+    // setMood(selectedMood);
   };
   //generate a random number
   const randomNumber = (length) => {
