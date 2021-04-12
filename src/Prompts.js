@@ -1,6 +1,6 @@
 import React from "react";
 import firebase from "./firebase";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGrinAlt,
@@ -14,12 +14,22 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 
 function Prompts(props) {
+
   // const [prompts, setPrompts] = useState([]);
   const [displayPrompts, setDisplayPrompts] = useState("");
   const [userInput, setUserInput] = useState("");
   // const [musings, setMusings] = useState([]);
   const [mood, setMood] = useState("");
   const [countMusings, setCountMusings] = useState(1);
+  // const newPromptsState = [];
+  
+
+  useEffect(() => {
+    //set the first prompt with a random selection
+    const promptLength = props.prompts.length;
+    setDisplayPrompts(props.prompts[randomNumber(promptLength)]);
+    
+  }, [props])
 
   //grab date and time
   const dateTimeFunction = () => {
