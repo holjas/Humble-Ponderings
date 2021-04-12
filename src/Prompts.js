@@ -45,7 +45,6 @@ function Prompts(props) {
     setMood("");
     setCountMusings(countMusings + 1);
   };
-
   //button to generate random prompt
   const handleRandom = (e) => {
     e.preventDefault();
@@ -60,13 +59,11 @@ function Prompts(props) {
       e.target.className = "show";
     }
   }
-
   //submits selected mood to the database
   const handleMood = (e) => {
     const selectedMood = e.target.id;
     setMood(selectedMood);
   };
-
   //generate a random number
   const randomNumber = (length) => {
     const number = Math.floor(Math.random() * length);
