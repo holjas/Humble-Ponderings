@@ -32,13 +32,16 @@ function Musings(props) {
     //   });
     // console.log(e.currentTarget.id);
     // const targetedId = e.currentTarget.id;
-    const targetedId = e.currentTarget.parentNode.parentNode.children[1];
+    const targetedId = e.currentTarget.parentNode.parentNode.children[1]; //target the musing
+    targetedId.style.display = "none"; //hide the musing
+    const editForm = document.getElementById("textBoxEdit");
+    editForm.style.display = "flex";
     const targetedArea = document.getElementById(targetedId);
-    targetedId.style.backgroundColor = "red";
+
     // console.log(e.currentTarget.parentNode.parentNode.children[1]);
   };
 
-  // const openTextBox = () => {
+  // const openTextBox = (area) => {
   //   const textBoxArea = document.getElementById("textBoxArea");
   // };
 
@@ -57,15 +60,18 @@ function Musings(props) {
               {/*  */}
               {/*  */}
               <form action="submit" id="textBoxEdit" className="textBoxEdit">
-                <label htmlFor="editMusing">edit here</label>
-                <input
-                  // type="text"
+                <label htmlFor="editMusing" className="visually-hidden">
+                  edit musing here
+                </label>
+                <textarea
+                  type="textarea"
                   id="editMusing"
                   // // onChange={handleChange}
                   // // value={userInput}
+                  value={item.musing[2]}
                 />
 
-                <button>edit button</button>
+                <button>save changes</button>
               </form>
               {/*  */}
               {/*  */}
