@@ -8,11 +8,10 @@ import Header from "./Header";
 import Musings from "./Musings";
 import Footer from "./Footer";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGrinAlt, faGrinHearts, faGrinStars, faMehRollingEyes, faAngry, faDizzy, faTired, faSadCry } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGrin } from "@fortawesome/free-solid-svg-icons";
-
+// import { faAngry } from '@fortawesome/free-solid-svg-icons'
+// import { faDizzy } from '@fortawesome/free-solid-svg-icons'
 
 function App() {
   const [prompts, setPrompts] = useState([]);
@@ -21,7 +20,6 @@ function App() {
   const [musings, setMusings] = useState([]);
   const [mood, setMood] = useState("");
   const [countMusings, setCountMusings] = useState(1);
-
 
   //grab date and time
   const dateTimeFunction = () => {
@@ -67,18 +65,7 @@ function App() {
   const handleMood = (e) => {
     const selectedMood = e.target.id;
     setMood(selectedMood);
-  }
-
-  // remove musing
-  const removeMusing = (props) => {
-    const userId = `-MY23fP9h4gvOjL_I7-0`;
-    firebase.database().ref("musings/" + userId);
-    // dbRef.("musings").remove();
-    console.log('clicked!')
-  }
-
   };
-
   //grabs from database on mount
   useEffect(() => {
     const dbRef = firebase.database().ref();
@@ -118,40 +105,6 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <h1>Humble Ponderings</h1>
-      <h3>Get your thoughts out, Get your feels out</h3>
-        <h2 className="show" onClick={toggleDisplay}>
-          {displayPrompts}
-        </h2>
-        <p>{mood}</p>
-        <form action="submit">
-          <label htmlFor="newMusings">Put a thought there</label>
-          <input
-            type="text"
-            id="newMusings"
-            onChange={handleChange}
-            value={userInput}
-          />
-          <p className="moodText">Add a feel</p>
-          <div className="moodWrapper">
-            <div className="mood"><FontAwesomeIcon icon={faGrinAlt} onClick={handleMood} value="happy" id="happy"/></div>
-            <div className="mood"><FontAwesomeIcon icon={faGrinHearts} onClick={handleMood} value="love" id="love"/></div>
-            <div className="mood"><FontAwesomeIcon icon={faGrinStars} onClick={handleMood} value="excited" id="excited"/></div>
-            <div className="mood"><FontAwesomeIcon icon={faMehRollingEyes} onClick={handleMood} value="whatever" id="whatever"/></div>
-            <div className="mood"><FontAwesomeIcon icon={faAngry} onClick={handleMood} value="angry" id="angry"/></div>
-            <div className="mood"><FontAwesomeIcon icon={faDizzy} onClick={handleMood} value="shocked" id="shocked"/></div>
-            <div className="mood"><FontAwesomeIcon icon={faTired} onClick={handleMood} value="tired" id="tired"/></div>
-            <div className="mood"><FontAwesomeIcon icon={faSadCry} onClick={handleMood} value="Sad" id="sad"/></div>
-          </div>
-          <button onClick={handleClick}>im a button</button>
-          <button onClick={handleRandom}>generate a new prompt</button>
-        </form>
-
-      <section className="musingContainer wrapper">
-        <Musings musingState={musings} removeMusing={removeMusing}/>
-      </section>
-
     <div className="App appWrapper">
       <Header />
 
