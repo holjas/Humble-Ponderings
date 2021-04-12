@@ -14,16 +14,10 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 
 function Prompts(props) {
-
-  // const [prompts, setPrompts] = useState([]);
   const [displayPrompts, setDisplayPrompts] = useState("");
   const [userInput, setUserInput] = useState("");
-  // const [musings, setMusings] = useState([]);
   const [mood, setMood] = useState("");
-  const [countMusings, setCountMusings] = useState(1);
-  // const newPromptsState = [];
   
-
   useEffect(() => {
     //set the first prompt with a random selection
     const promptLength = props.prompts.length;
@@ -50,10 +44,9 @@ function Prompts(props) {
     const dbRef = firebase.database().ref().child("musings");
 
     const dateTime = dateTimeFunction();
-    dbRef.push([countMusings, displayPrompts, userInput, dateTime, mood]);
+    dbRef.push([displayPrompts, userInput, dateTime, mood]);
     setUserInput("");
     setMood("");
-    setCountMusings(countMusings + 1);
   };
 
   //button to generate random prompt
@@ -73,10 +66,16 @@ function Prompts(props) {
 
   //submits selected mood to the database
   const handleMood = (e) => {
-    const selectedMood = e.target.id;
-    setMood(selectedMood);
+    const selectedMood = e.target.parentNode.id;
+    const parentSelectedMood = e.target.parentNode.parentNode.id;
+    if (selectedMood) {
+      setMood(selectedMood)
+    } else { 
+      setMood(parentSelectedMood)
+    }
   };
 
+  
   //generate a random number
   const randomNumber = (length) => {
     const number = Math.floor(Math.random() * length);
@@ -91,7 +90,7 @@ function Prompts(props) {
       <h3>{mood}</h3>
       <form action="submit">
         <label htmlFor="newMusings">Put a thought there</label>
-        <input
+        <textarea
           type="text"
           id="newMusings"
           onChange={handleChange}
@@ -135,7 +134,7 @@ function Prompts(props) {
           <div className="mood" onClick={handleMood} value="tired" id="tired">
             <FontAwesomeIcon icon={faTired} />
           </div>
-          <div className="mood" onClick={handleMood} value="Sad" id="sad">
+          <div className="mood" onClick={handleMood} value="sad" id="sad">
             <FontAwesomeIcon icon={faSadCry} />
           </div>
         </div>

@@ -6,6 +6,7 @@ import {
   faTrashAlt,
 } from "@fortawesome/free-regular-svg-icons";
 
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Musings(props) {
@@ -42,6 +43,9 @@ function Musings(props) {
     // console.log(e.currentTarget.parentNode.parentNode.children[1]);
   };
 
+  // return FA icon for related value
+
+  
   // const openTextBox = (area) => {
   //   const textBoxArea = document.getElementById("textBoxArea");
   // };
@@ -77,6 +81,7 @@ function Musings(props) {
               {/*  */}
               <div className="musingNav">
                 <FontAwesomeIcon icon={faSmile} className="navMood" />
+                <p id="navMood">{item.musing[3]}</p>
 
                 <div onClick={handleEdit} id={item.key}>
                   <FontAwesomeIcon icon={faEdit} className="navButton" />
