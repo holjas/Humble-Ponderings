@@ -29,12 +29,12 @@ function App() {
       for (const key in responsePrompts) {
         newPromptsState.push(responsePrompts[key]);
       }
-      // //set the first prompt with a random selection
+
+      //set the first prompt with a random selection
       // const promptLength = newPromptsState.length;
       // setDisplayPrompts(newPromptsState[randomNumber(promptLength)]);
       //hold array with all prompts for future manipulations
-      setPrompts(newPromptsState)
-      
+      setPrompts(newPromptsState);
 
       //setting musings into musings state
       for (const key in responseMusings) {
@@ -53,6 +53,7 @@ function App() {
   //   return number;
   // };
 
+  // console.log("iam app", musings);
   return (
     <div className="App appWrapper">
       {/* <p>DELETETHIS{(displayPrompts, prompts)}</p> */}

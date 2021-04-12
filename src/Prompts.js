@@ -17,13 +17,13 @@ function Prompts(props) {
   const [displayPrompts, setDisplayPrompts] = useState("");
   const [userInput, setUserInput] = useState("");
   const [mood, setMood] = useState("");
-  
+
+  //set the first prompt with a random selection
+
   useEffect(() => {
-    //set the first prompt with a random selection
     const promptLength = props.prompts.length;
     setDisplayPrompts(props.prompts[randomNumber(promptLength)]);
-    
-  }, [props])
+  }, [props]);
 
   //grab date and time
   const dateTimeFunction = () => {
@@ -48,7 +48,6 @@ function Prompts(props) {
     setUserInput("");
     setMood("");
   };
-
   //button to generate random prompt
   const handleRandom = (e) => {
     e.preventDefault();
@@ -63,9 +62,9 @@ function Prompts(props) {
       e.target.className = "show";
     }
   }
-
   //submits selected mood to the database
   const handleMood = (e) => {
+
     const selectedMood = e.target.parentNode.id;
     const parentSelectedMood = e.target.parentNode.parentNode.id;
     if (selectedMood) {
@@ -75,7 +74,17 @@ function Prompts(props) {
     }
   };
 
-  
+    const selectedMood = e.target.parentNode.parentNode.id;
+    const parentSelectedMood = e.target.parentNode.id;
+    console.log("selected", selectedMood);
+    console.log("parent", parentSelectedMood);
+    if (selectedMood) {
+      console.log("selectedmood is true");
+    } else {
+      console.log("selectedmood is not ture");
+    }
+    // setMood(selectedMood);
+  };
   //generate a random number
   const randomNumber = (length) => {
     const number = Math.floor(Math.random() * length);
