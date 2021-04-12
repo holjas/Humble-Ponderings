@@ -69,12 +69,12 @@ function Musings(props) {
         return (
           <div className="musingCard" key={item.key}>
             <div className="musingHeadline">
-              <h4>{item.musing[3]}</h4>
+              <h4>{item.musing[2]}</h4>
             </div>
 
             <div className="musingTextBox">
-              <p className="textEmphasis">{item.musing[1]}</p>
-              <p id="textBoxDisplay">{item.musing[2]}</p>
+              <p className="textEmphasis">{item.musing[0]}</p>
+              <p id="textBoxDisplay">{item.musing[1]}</p>
               {/*  */}
               {/*  */}
               <form action="submit" id="textBoxEdit" className="textBoxEdit">
@@ -84,7 +84,7 @@ function Musings(props) {
                 <textarea
                   type="text"
                   id="editMusing"
-                  defaultValue={item.musing[2]}
+                  defaultValue={item.musing[1]}
                 />
 
                 <button onClick={handleSaveEdit}>save changes</button>
