@@ -190,7 +190,24 @@ template {
 [hidden] {
   display: none;
 }
-
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap; /* added line */
+}
+.visually-hidden:not(:focus):not(:active) {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap; /* added line */
+}
 .clearfix:after {
   visibility: hidden;
   display: block;
@@ -288,6 +305,7 @@ h2 {
 form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
@@ -350,19 +368,21 @@ p {
 button {
   color: var(--white);
   background: var(--primary1);
-  border: 1px solid var(--primary3);
   cursor: pointer;
   font-family: var(--fontHeadline);
-  font-size: 28px;
+  font-size: 1.55rem;
   font-weight: bold;
+  border: transparent;
   height: auto;
   margin: 10px;
   padding: 20px 10px;
   text-transform: uppercase;
   width: 15vw;
+  transition: 0.3s;
 }
 
 button:focus,
 button:hover {
-  border: 2px solid white;
+  border: transparent;
+  transform: scale(1.05);
 }
