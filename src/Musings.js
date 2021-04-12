@@ -6,6 +6,7 @@ import {
   faTrashAlt,
 } from "@fortawesome/free-regular-svg-icons";
 
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Musings(props) {
@@ -24,6 +25,14 @@ function Musings(props) {
     const editForm = e.currentTarget.parentNode.parentNode.children[2];
     editForm.style.display = "flex";
   };
+
+  // return FA icon for related value
+
+  
+  // const openTextBox = (area) => {
+  //   const textBoxArea = document.getElementById("textBoxArea");
+  // };
+
   //edit musing save button/ send changes to firebse
   const handleSaveEdit = (itemKey, prompt, dateTime, editMusing, event) => {
     firebase
@@ -43,6 +52,7 @@ function Musings(props) {
     const editForm = e.currentTarget.parentNode.parentNode.children[2];
     editForm.style.display = "none";
   };
+
 
   return (
     <section className="musingContainer warpperThick">
@@ -90,6 +100,9 @@ function Musings(props) {
               {/* card nav bar, with edit/delete/bookmark */}
               <div className="musingNav">
                 <FontAwesomeIcon icon={faSmile} className="navMood" />
+
+                <p id="navMood">{item.musing[3]}</p>
+
                 <div onClick={handleEdit} id={item.key}>
                   <FontAwesomeIcon icon={faEdit} className="navButton" />
                 </div>

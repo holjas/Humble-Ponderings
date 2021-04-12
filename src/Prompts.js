@@ -19,6 +19,7 @@ function Prompts(props) {
   const [mood, setMood] = useState("");
 
   //set the first prompt with a random selection
+
   useEffect(() => {
     const promptLength = props.prompts.length;
     setDisplayPrompts(props.prompts[randomNumber(promptLength)]);
@@ -63,6 +64,16 @@ function Prompts(props) {
   }
   //submits selected mood to the database
   const handleMood = (e) => {
+
+    const selectedMood = e.target.parentNode.id;
+    const parentSelectedMood = e.target.parentNode.parentNode.id;
+    if (selectedMood) {
+      setMood(selectedMood)
+    } else { 
+      setMood(parentSelectedMood)
+    }
+  };
+
     const selectedMood = e.target.parentNode.parentNode.id;
     const parentSelectedMood = e.target.parentNode.id;
     console.log("selected", selectedMood);
@@ -88,7 +99,7 @@ function Prompts(props) {
       <h3>{mood}</h3>
       <form action="submit">
         <label htmlFor="newMusings">Put a thought there</label>
-        <input
+        <textarea
           type="text"
           id="newMusings"
           onChange={handleChange}
@@ -132,7 +143,7 @@ function Prompts(props) {
           <div className="mood" onClick={handleMood} value="tired" id="tired">
             <FontAwesomeIcon icon={faTired} />
           </div>
-          <div className="mood" onClick={handleMood} value="Sad" id="sad">
+          <div className="mood" onClick={handleMood} value="sad" id="sad">
             <FontAwesomeIcon icon={faSadCry} />
           </div>
         </div>

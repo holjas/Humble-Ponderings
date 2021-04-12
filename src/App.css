@@ -319,7 +319,7 @@ label {
   padding: 20px;
 }
 
-input {
+textarea {
   background: var(--primary3);
   border: 8px solid var(--primary1);
   margin: 0 auto;
@@ -327,7 +327,7 @@ input {
   height: 20vh;
 }
 
-input:focus {
+textarea:focus {
   border: 2px solid white;
   padding: 15px;
 }
@@ -363,6 +363,7 @@ p {
 
 .mood:hover {
   color: var(--primary2);
+  transform: scale(1.2);
 }
 
 button {
