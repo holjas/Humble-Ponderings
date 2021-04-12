@@ -21,10 +21,8 @@ function Musings(props) {
   const handleEdit = (e) => {
     const targetedId = e.currentTarget.parentNode.parentNode.children[1]; //target the musing
     targetedId.style.display = "none"; //hide the musing
-    console.log(targetedId);
     const editForm = e.currentTarget.parentNode.parentNode.children[2]; //target the edit box
     editForm.style.display = "flex";
-    console.log(editForm);
 
     // const targetKey = e.currentTarget.id;
     // firebase
@@ -43,7 +41,6 @@ function Musings(props) {
 
     // console.log(e.currentTarget.parentNode.parentNode.children[1]);
   };
-
   //edit musing save button/ send changes to firebse
   const handleSaveEdit = (itemKey, prompt, dateTime, editMusing) => {
     // const editMusing = e.currentTarget.parentNode[0].value;
@@ -59,11 +56,12 @@ function Musings(props) {
     console.log("PROMPT", prompt);
     console.log("DATETIME", dateTime);
     console.log("EDIT MUSING", editMusing);
-    handleCloseEdit();
   };
-  const handleCloseEdit = () => {
-    console.log("JUST LOGING");
-  };
+  //captures the text input values
+  // const handleChange = (event) => {
+  //   event.target.value = "CHANGE BY ME";
+  //   // console.log(event.target.value);
+  // };
 
   return (
     <section className="musingContainer warpperThick">
@@ -75,7 +73,7 @@ function Musings(props) {
         return (
           <div className="musingCard" key={item.key}>
             <div className="musingHeadline">
-              {/* displays time musing was submitted*/}
+              {/* displays time */}
               <h4>{item.musing[2]}</h4>
             </div>
 
@@ -83,9 +81,9 @@ function Musings(props) {
               {/* displays writing prompt */}
               <p className="textEmphasis">{item.musing[0]}</p>
               {/* displays previously entered musing */}
-              <p>{item.musing[1]}</p>
+              <p id="textBoxDisplay">{item.musing[1]}</p>
 
-              {/*form is hidden and will appear will 'edit' it selected start*/}
+              {/*form is hidden and will appear will 'edit' it selected */}
               <form action="submit" id={item.key} className="textBoxEdit">
                 <label htmlFor="editMusing" className="visually-hidden">
                   edit musing here
@@ -99,16 +97,22 @@ function Musings(props) {
                 <button
                   onClick={(e) => {
                     e.preventDefault();
-                    handleSaveEdit(item.key, item.musing[0], item.musing[2]);
+                    handleSaveEdit(
+                      item.key,
+                      item.musing[0],
+                      item.musing[2],
+                      e.currentTarget.parentNode[0].value
+                    );
                   }}
                 >
                   save changes
                 </button>
               </form>
-              {/* form (hidden) end  */}
+              {/*  */}
               {/*  */}
               <div className="musingNav">
                 <FontAwesomeIcon icon={faSmile} className="navMood" />
+
                 <div onClick={handleEdit} id={item.key}>
                   <FontAwesomeIcon icon={faEdit} className="navButton" />
                 </div>
