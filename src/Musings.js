@@ -1,4 +1,4 @@
-import firebase from "./firebase";
+// import firebase from "./firebase";
 import {
   faBookmark,
   faEdit,
@@ -21,7 +21,7 @@ function Musings(props) {
   // props.musingState.map((x) => console.log(x.musing[0]));
 
   const handleEdit = (e) => {
-    const userId = `-MY23fP9h4gvOjL_I7-0`;
+    // const userId = `-MY23fP9h4gvOjL_I7-0`;
     // firebase
     //   .database()
     //   .ref("musings/" + userId)
