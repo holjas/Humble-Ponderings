@@ -1,23 +1,9 @@
-:root {
-  --primary1: #463e2a;
-  --primary2: #b5b3ad;
-  --primary3: #eeebe3;
-  --accent1: #eeb4a2;
-  --accent2: #e28061;
-  --black: #121212;
-  --white: #f1f1f1;
-  --fontHeadline: "Playfair Display", serif;
-  --fontMain: "Montserrat", sans-serif;
-  --letterSpacingHeadline: 6px;
-  --letterSpacingMain: 1.5px;
-}
-
 .musingContainer {
   display: grid;
-  grid-template-columns: repeat(2, 500px);
+  grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 1fr;
-  row-gap: 20px;
-  column-gap: 40px;
+  row-gap: 40px;
+  column-gap: 80px;
 }
 .musingCard {
   display: flex;
@@ -32,15 +18,15 @@
   line-height: 35px;
   background-color: var(--primary1);
   text-align: left;
-  padding-left: 20px;
 }
 .musingTextBox {
-  width: 100%;
-  padding: 20px;
+  padding: 10px;
   line-height: 130%;
 }
 .musingTextBox p:first-child {
   padding-bottom: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 .musingTextBox p:nth-child(2) {
   overflow: hidden;
@@ -48,10 +34,6 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
-}
-.textEmphasis {
-  text-transform: uppercase;
-  font-weight: bold;
 }
 .musingCard h4 {
   color: var(--primary3);
@@ -91,9 +73,7 @@
   left: -999;
 }
 .textBoxEdit button {
-  width: 50%;
   font-size: 1rem;
-  margin: 0;
 }
 .textBoxEdit textarea {
   margin-bottom: 10px;
@@ -112,97 +92,7 @@
 /*  */
 /*  */
 /*  */
-/* header component start */
-.header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.headerImageContainer {
-  width: 500px;
-}
-.headerImageContainer img {
-  width: 100%;
-}
-.header h1 {
-  font-size: 4rem;
-  letter-spacing: 15px;
-  padding-bottom: 20px;
-}
-/* header component end */
-/*  */
-/* prompt component start */
-.promptContainer form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2rem;
-}
-.promptContainer label,
-.promptContainer label {
-  width: 80%;
-  padding: 10px 0;
-  font-family: var(--fontHeadline);
-  color: var(--primary3);
-  background: var(--primary1);
-  border: 8px solid var(--primary1);
-}
-.promptContainer h4 {
-  padding-top: 15px;
-}
-.promptContainer textarea,
-.moodWrapper {
-  width: 80%;
-}
-.moodWrapper {
-  border: 8px solid var(--primary1);
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  padding: 25px 0px;
-}
-.promptContainer label {
-  margin-top: 30px;
-}
-.mood {
-  font-size: 2.7rem;
-  transition: 0.3s;
-  color: var(--primary2);
-}
-.mood:hover,
-.mood:focus {
-  cursor: pointer;
-  transform: scale(1.2);
-  color: var(--primary1);
-}
-.promptBtnContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 80%;
-}
-.promptContainer button {
-  color: var(--white);
-  background: var(--primary1);
-  cursor: pointer;
-  font-family: var(--fontHeadline);
-  font-size: 1.25rem;
-  font-weight: bold;
-  border: transparent;
-  margin: 10px;
-  padding: 20px 30px;
-  text-transform: uppercase;
-  transition: 0.3s;
-}
-.promptContainer button:hover,
-.promptContainer button:focus {
-  transform: scale(1.1);
-}
-/* prompt component end */
-/*  */
+
 /* footer start */
 footer,
 .footerCreatedText {

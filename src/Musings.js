@@ -56,9 +56,9 @@ function Musings(props) {
 
             <div className="musingTextBox">
               {/* displays writing prompt */}
-              <p className="textEmphasis">{item.musing[0]}</p>
+              <p>{item.musing[0]}</p>
               {/* displays previously entered musing */}
-              <p id="textBoxDisplay">{item.musing[1]}</p>
+              <p>{item.musing[1]}</p>
 
               {/*form is hidden and will appear will 'edit' it selected */}
               <form action="submit" id={item.key} className="textBoxEdit">
