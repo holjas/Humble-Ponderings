@@ -308,6 +308,7 @@ button:focus {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: var(--primary1);
 }
 .headerImageContainer {
   width: 500px;
@@ -317,7 +318,7 @@ button:focus {
 }
 .header h1 {
   font-size: 4rem;
-  letter-spacing: 15px;
+  letter-spacing: 25px;
   padding-bottom: 20px;
 }
 /* header component end */
@@ -330,17 +331,20 @@ button:focus {
   align-items: center;
   font-size: 1.2rem;
 }
-.promptContainer label,
 .promptContainer label {
   width: 80%;
   padding: 10px 0;
-  font-family: var(--fontHeadline);
   color: var(--primary3);
   background: var(--primary1);
   border: 8px solid var(--primary1);
 }
+.promptContainer p {
+  font-family: var(--fontHeadline);
+  padding-left: 20px;
+}
 .promptContainer h4 {
   padding-top: 15px;
+  padding-left: 20px;
 }
 .promptContainer textarea,
 .moodWrapper {
@@ -353,9 +357,7 @@ button:focus {
   justify-content: space-around;
   padding: 25px 0px;
 }
-.promptContainer label {
-  margin-top: 30px;
-}
+
 .mood {
   font-size: 2.7rem;
   transition: 0.3s;

@@ -75,7 +75,8 @@ function Prompts(props) {
       <div className="wrapper">
         <form action="submit">
           <label htmlFor="newMusings">
-            Your prompt for the day... {<h4>{displayPrompts}</h4>}
+            <p>Your prompt for the day...</p>
+            {<h4>{displayPrompts}</h4>}
           </label>
           <textarea
             type="text"
@@ -88,7 +89,9 @@ function Prompts(props) {
 <input type="image" src="img_submit.gif" alt="Submit" width="48" height="48">
 */}
 
-          <label htmlFor="moodWrapper">How are you feeling today?</label>
+          <label htmlFor="moodWrapper">
+            <p>How are you feeling today?</p>
+          </label>
           <div className="moodWrapper">
             <div className="mood" onClick={handleMood} value="happy" id="happy">
               <FontAwesomeIcon icon={faGrinAlt} />
