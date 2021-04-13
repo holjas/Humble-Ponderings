@@ -83,6 +83,11 @@ function Prompts(props) {
             onChange={handleChange}
             value={userInput}
           />
+          {/*
+<label htmlFor="moodWrapper"> happy mood</label>
+<input type="image" src="img_submit.gif" alt="Submit" width="48" height="48">
+*/}
+
           <label htmlFor="moodWrapper">How are you feeling today?</label>
           <div className="moodWrapper">
             <div className="mood" onClick={handleMood} value="happy" id="happy">
@@ -127,7 +132,9 @@ function Prompts(props) {
           </div>
           <div className="promptBtnContainer">
             <button onClick={handleRandom}>generate a new prompt</button>
-            <button onClick={handleClick}>submit</button>
+            <button onClick={handleClick} type="submit">
+              submit
+            </button>
           </div>
         </form>
       </div>

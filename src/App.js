@@ -1,5 +1,3 @@
-import "./DeleteStyles.css";
-// REMEMBER TO DELETE THIS CONNECTION
 import "./App.css";
 import firebase from "./firebase";
 import { useState, useEffect } from "react";
