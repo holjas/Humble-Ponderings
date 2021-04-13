@@ -11,7 +11,6 @@ import Footer from "./Footer";
 
 function App() {
   const [prompts, setPrompts] = useState([]);
-  // const [displayPrompts, setDisplayPrompts] = useState("");
   const [musings, setMusings] = useState([]);
 
   //grabs from database on mount
@@ -22,20 +21,13 @@ function App() {
       const newPromptsState = [];
       const responseMusings = response.val().musings;
       const newMusingsState = [];
-      // const responseMood = response.val().mood;
-      // const newMoodState = [];
 
       //setting prompts into prompt state
       for (const key in responsePrompts) {
         newPromptsState.push(responsePrompts[key]);
       }
-
-      //set the first prompt with a random selection
-      // const promptLength = newPromptsState.length;
-      // setDisplayPrompts(newPromptsState[randomNumber(promptLength)]);
       //hold array with all prompts for future manipulations
       setPrompts(newPromptsState);
-
       //setting musings into musings state
       for (const key in responseMusings) {
         newMusingsState.push({
@@ -47,22 +39,11 @@ function App() {
     });
   }, []);
 
-  // //generate a random number
-  // const randomNumber = (length) => {
-  //   const number = Math.floor(Math.random() * length);
-  //   return number;
-  // };
-
-  // console.log("iam app", musings);
   return (
-    <div className="App appWrapper">
-      {/* <p>DELETETHIS{(displayPrompts, prompts)}</p> */}
+    <div className="App">
       <Header />
-
       <Prompts prompts={prompts} />
-
       <Musings musingState={musings} />
-
       <Footer />
     </div>
   );

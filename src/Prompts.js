@@ -53,24 +53,14 @@ function Prompts(props) {
     const promptLength = props.prompts.length;
     setDisplayPrompts(props.prompts[randomNumber(promptLength)]);
   };
-  //toggle display once user has entered information
-  function toggleDisplay(e) {
-    if (e.target.className === "show") {
-      e.target.className = "hidden";
-    } else {
-      e.target.className = "show";
-    }
-  }
   //submits selected mood to the database
   const handleMood = (e) => {
     const selectedMood = e.target.parentNode.parentNode.id;
     const parentSelectedMood = e.target.parentNode.id;
-    console.log("selected", selectedMood);
-    console.log("parent", parentSelectedMood);
     if (selectedMood) {
-      console.log("selectedmood is true");
+      setMood(selectedMood);
     } else {
-      console.log("selectedmood is not ture");
+      setMood(parentSelectedMood);
     }
     // setMood(selectedMood);
   };
@@ -81,65 +71,67 @@ function Prompts(props) {
   };
 
   return (
-    <>
-      <h2 className="show" onClick={toggleDisplay}>
-        {displayPrompts}
-      </h2>
-      <h3>{mood}</h3>
-      <form action="submit">
-        <label htmlFor="newMusings">Put a thought there</label>
-        <input
-          type="text"
-          id="newMusings"
-          onChange={handleChange}
-          value={userInput}
-        />
-        <p className="moodText">Add a feel</p>
-        <div className="moodWrapper">
-          <div className="mood" onClick={handleMood} value="happy" id="happy">
-            <FontAwesomeIcon icon={faGrinAlt} />
+    <section className="promptContainer">
+      <div className="wrapper">
+        <form action="submit">
+          <label htmlFor="newMusings">
+            Your prompt for the day... {<h4>{displayPrompts}</h4>}
+          </label>
+          <textarea
+            type="text"
+            id="newMusings"
+            onChange={handleChange}
+            value={userInput}
+          />
+          <label htmlFor="moodWrapper">How are you feeling today?</label>
+          <div className="moodWrapper">
+            <div className="mood" onClick={handleMood} value="happy" id="happy">
+              <FontAwesomeIcon icon={faGrinAlt} />
+            </div>
+            <div className="mood" onClick={handleMood} value="love" id="love">
+              <FontAwesomeIcon icon={faGrinHearts} />
+            </div>
+            <div
+              className="mood"
+              onClick={handleMood}
+              value="excited"
+              id="excited"
+            >
+              <FontAwesomeIcon icon={faGrinStars} />
+            </div>
+            <div
+              className="mood"
+              onClick={handleMood}
+              value="whatever"
+              id="whatever"
+            >
+              <FontAwesomeIcon icon={faMehRollingEyes} />
+            </div>
+            <div className="mood" onClick={handleMood} value="angry" id="angry">
+              <FontAwesomeIcon icon={faAngry} />
+            </div>
+            <div
+              className="mood"
+              onClick={handleMood}
+              value="shocked"
+              id="shocked"
+            >
+              <FontAwesomeIcon icon={faDizzy} />
+            </div>
+            <div className="mood" onClick={handleMood} value="tired" id="tired">
+              <FontAwesomeIcon icon={faTired} />
+            </div>
+            <div className="mood" onClick={handleMood} value="Sad" id="sad">
+              <FontAwesomeIcon icon={faSadCry} />
+            </div>
           </div>
-          <div className="mood" onClick={handleMood} value="love" id="love">
-            <FontAwesomeIcon icon={faGrinHearts} />
+          <div className="promptBtnContainer">
+            <button onClick={handleRandom}>generate a new prompt</button>
+            <button onClick={handleClick}>submit</button>
           </div>
-          <div
-            className="mood"
-            onClick={handleMood}
-            value="excited"
-            id="excited"
-          >
-            <FontAwesomeIcon icon={faGrinStars} />
-          </div>
-          <div
-            className="mood"
-            onClick={handleMood}
-            value="whatever"
-            id="whatever"
-          >
-            <FontAwesomeIcon icon={faMehRollingEyes} />
-          </div>
-          <div className="mood" onClick={handleMood} value="angry" id="angry">
-            <FontAwesomeIcon icon={faAngry} />
-          </div>
-          <div
-            className="mood"
-            onClick={handleMood}
-            value="shocked"
-            id="shocked"
-          >
-            <FontAwesomeIcon icon={faDizzy} />
-          </div>
-          <div className="mood" onClick={handleMood} value="tired" id="tired">
-            <FontAwesomeIcon icon={faTired} />
-          </div>
-          <div className="mood" onClick={handleMood} value="Sad" id="sad">
-            <FontAwesomeIcon icon={faSadCry} />
-          </div>
-        </div>
-        <button onClick={handleClick}>im a button</button>
-        <button onClick={handleRandom}>generate a new prompt</button>
-      </form>
-    </>
+        </form>
+      </div>
+    </section>
   );
 }
 
