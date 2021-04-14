@@ -60,11 +60,7 @@ function Prompts(props) {
     const number = Math.floor(Math.random() * length);
     return number;
   };
-
-
-
-
-
+  
   return (
     <section className="promptContainer">
       <div className="wrapper">
