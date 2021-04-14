@@ -7,8 +7,6 @@
 - musing component styling
 - footer component styling
 - media queries
-
-
  /* imports */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Playfair+Display&display=swap");
 
@@ -694,7 +692,7 @@ footer {
     letter-spacing: 10px;
   }
   .header h3 {
-    font-size: .75rem;
+    font-size: 0.75rem;
   }
   .headerImageContainer {
     width: 200px;
