@@ -34,10 +34,12 @@ function Prompts(props) {
     const time = `${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`;
     return `${date} ${time}`;
   };
+
   //captures the text input values
   const handleChange = (event) => {
     setUserInput(event.target.value);
   };
+
   //submits the input to the database
   const handleClick = (e) => {
     e.preventDefault();
@@ -48,23 +50,16 @@ function Prompts(props) {
     setUserInput("");
     setMood("");
   };
+  
   //button to generate random prompt
   const handleRandom = (e) => {
     e.preventDefault();
     const promptLength = props.prompts.length;
     setDisplayPrompts(props.prompts[randomNumber(promptLength)]);
   };
-  //toggle display once user has entered information
-  function toggleDisplay(e) {
-    if (e.target.className === "show") {
-      e.target.className = "hidden";
-    } else {
-      e.target.className = "show";
-    }
-  }
+
   //submits selected mood to the database
   const handleMood = (e) => {
-
     const selectedMood = e.target.parentNode.id;
     const parentSelectedMood = e.target.parentNode.parentNode.id;
     if (selectedMood) {
@@ -74,29 +69,23 @@ function Prompts(props) {
     }
   };
 
-    const selectedMood = e.target.parentNode.parentNode.id;
-    const parentSelectedMood = e.target.parentNode.id;
-    console.log("selected", selectedMood);
-    console.log("parent", parentSelectedMood);
-    if (selectedMood) {
-      console.log("selectedmood is true");
-    } else {
-      console.log("selectedmood is not ture");
-    }
-    // setMood(selectedMood);
-  };
   //generate a random number
   const randomNumber = (length) => {
     const number = Math.floor(Math.random() * length);
     return number;
   };
 
+
+
+
+
   return (
     <>
-      <h2 className="show" onClick={toggleDisplay}>
+      <h2 className="show">
         {displayPrompts}
       </h2>
       <h3>{mood}</h3>
+        
       <form action="submit">
         <label htmlFor="newMusings">Put a thought there</label>
         <textarea
