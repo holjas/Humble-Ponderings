@@ -20,13 +20,12 @@ function App() {
       const responseMusings = response.val().musings;
       const newMusingsState = [];
 
-      //setting prompts into prompt state
+      //setting prompts into promptState
       for (const key in responsePrompts) {
         newPromptsState.push(responsePrompts[key]);
       }
-      //hold array with all prompts for future manipulations
       setPrompts(newPromptsState);
-      //setting musings into musings state
+      //setting musings into musingsState
       for (const key in responseMusings) {
         newMusingsState.push({
           key: key,
