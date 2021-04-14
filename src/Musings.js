@@ -1,4 +1,3 @@
-import { useState } from "react";
 import firebase from "./firebase";
 import { useState } from 'react'
 import {
@@ -19,49 +18,7 @@ import { faBookmark as faBookmarkFull } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Musings(props) {
-
-  const [userMood, setUserMood] = useState('');
-
-  const handleUserMood = (e) => {
-    console.log(e.target.value);
-    setUserMood(e.target.value);
-
-    // // const { userMood } = props;
-    //   switch (userMood) {
-    //     case 'happy':
-    //       return <p><FontAwesomeIcon icon={faGrinAlt} /></p>;
-    //       break;
-    //     case 'love':
-    //       return <p><FontAwesomeIcon icon={faGrinHearts} /></p>;
-    //       break;
-    //     case 'excited':
-    //       return <p><FontAwesomeIcon icon={faGrinStars} /></p>;
-    //       break;
-    //     case 'whatever':
-    //       return <p><FontAwesomeIcon icon={faMehRollingEyes} /></p>;
-    //       break;
-    //     case 'angry':
-    //       return <p><FontAwesomeIcon icon={faAngry} /></p>;
-    //       break;
-    //     case 'shocked':
-    //       return <p><FontAwesomeIcon icon={faDizzy} /></p>;
-    //       break;
-    //     case 'tired':
-    //       return <p><FontAwesomeIcon icon={faTired} /></p>;
-    //       break;
-    //     case 'sad':
-    //       return <p><FontAwesomeIcon icon={faSadCry} /></p>;
-    //       break;
-    //     default:
-    //       return <p><FontAwesomeIcon icon={faSmile} className="navMood" /></p>;
-    //       break;
-    //   }
-
-
-  }
-
-
-
+  // const [userMood, setUserMood] = useState('');
 
   const [bookmarkIcon, setBookmarkIcon] = useState(false);
 
@@ -74,7 +31,6 @@ function Musings(props) {
       .remove();
   };
 
-
   //edit musing, opens the textarea window to make changes
   const handleEdit = (e) => {
     const targetedId = e.currentTarget.parentNode.parentNode.children[1];
@@ -82,11 +38,6 @@ function Musings(props) {
     const editForm = e.currentTarget.parentNode.parentNode.children[2];
     editForm.style.display = "flex";
   };
-
-
-  // const openTextBox = (area) => {
-  //   const textBoxArea = document.getElementById("textBoxArea");
-  // };
 
   //edit musing save button/ send changes to firebse
   const handleSaveEdit = (itemKey, prompt, dateTime, editMusing, event) => {
@@ -107,7 +58,6 @@ function Musings(props) {
     const editForm = e.currentTarget.parentNode.parentNode.children[2];
     editForm.style.display = "none";
   };
-
 
   return (
     <section className="wrapper wrapperThick">
@@ -162,41 +112,14 @@ function Musings(props) {
               {/* card nav bar, with edit/delete/bookmark */}
               <div className="musingNav">
                 <div className="navMood">
-                <p id="navMood" value={userMood} onChange={handleUserMood}></p>
+                {/* <p id="navMood" value={userMood} onChange={handleUserMood}></p> */}
                 </div>
-                {/* <FontAwesomeIcon icon={faSmile} className="navMood" />
-                <p id="navMood">{item.musing[3]}</p> */}
+                <FontAwesomeIcon icon={faSmile} className="navMood" />
+                <p id="navMood">{item.musing[3]}</p>
 
                 <div onClick={handleEdit} id={item.key}>
                   <FontAwesomeIcon icon={faEdit} className="navButton" />
                 </div>
-                <div onClick={handleRemoveMusing} id={item.key}>
-                  <FontAwesomeIcon icon={faTrashAlt} className="navButton" />
-                </div>
-                <div>
-                  <FontAwesomeIcon icon={faBookmark} className="navButton" />
-
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleSaveEdit(
-                          item.key,
-                          writingPrompt,
-                          dateTime,
-                          e.currentTarget.parentNode[0].value,
-                          e
-                        );
-                      }}
-                    >
-                      save changes
-                    </button>
-                  </form>
-                  {/*  */}
-                  {/* card nav bar, with edit/delete/bookmark */}
-                  <div className="musingNav">
-                    <FontAwesomeIcon icon={faSmile} className="navMood" />
-                    <div onClick={handleEdit} id={item.key}>
-                      <FontAwesomeIcon icon={faEdit} className="navButton" />
-                    </div>
                     <div onClick={handleRemoveMusing} id={item.key}>
                       <FontAwesomeIcon
                         icon={faTrashAlt}
