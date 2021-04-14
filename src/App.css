@@ -623,7 +623,7 @@ footer {
     padding: 10px;
   }
   .moodWrapper {
-    flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
   }
   .mood {
@@ -633,21 +633,24 @@ footer {
 }
 
 @media screen and (max-width: 340px) {
+  .wrapper {
+    padding: 10px;
+  }
   .header h1 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     letter-spacing: 10px;
   }
   .header h3 {
-    font-size: 1rem;
+    font-size: .75rem;
   }
   .headerImageContainer {
     width: 250px;
   }
   .promptContainer h4 {
-    font-size: 1.1rem;
+    font-size: .8rem;
   }
   .footerSmallContainer h3 {
-    font-size: 16px;
+    font-size: 12px;
   }
   .footerCreatedText img {
     display: none;
