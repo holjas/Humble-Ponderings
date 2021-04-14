@@ -373,6 +373,7 @@ input[type="submit"]:focus {
   width: 40px;
   transition: 0.3s;
   opacity: 0.3;
+  height: 30px;
 }
 .mood:hover,
 .mood:focus {
@@ -585,8 +586,14 @@ footer {
     row-gap: 20px;
     column-gap: 30px;
   }
+  .musingAwaiting {
+    padding-bottom: 40px;
+  }
   .footerCreatedText img {
     display: none;
+  }
+  .footerCreatedText {
+    text-align: center;
   }
 }
 
@@ -610,7 +617,7 @@ footer {
     padding: 40px;
   }
   .headerImageContainer {
-    width: 375px;
+    width: 350px;
   }
   .header h1 {
     text-align: center;
