@@ -569,7 +569,6 @@ footer {
     font-size: 3rem;
     letter-spacing: 15px;
   }
-
 }
 
 @media screen and (max-width: 960px) {
@@ -673,6 +672,7 @@ footer {
   .mood {
     padding: 10px;
     width: 60px;
+    height: 30px;
   }
     .musingWaitingContainer {
     margin: 0 auto;
