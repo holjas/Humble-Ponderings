@@ -47,16 +47,6 @@ function Prompts(props) {
     setDisplayPrompts(props.prompts[randomNumber(promptLength)]);
   };
 
-  //submits selected mood to the database
-  const handleMood = (e) => {
-    const selectedMood = e.target.parentNode.id;
-    const parentSelectedMood = e.target.parentNode.parentNode.id;
-    if (selectedMood) {
-      setMood(selectedMood)
-    } else { 
-      setMood(parentSelectedMood)
-    }
-  };
 
   //submits selected mood to the database
   const handleMood = (e) => {
@@ -76,59 +66,6 @@ function Prompts(props) {
 
 
   return (
-
-    <>
-      <h2 className="show">
-        {displayPrompts}
-      </h2>
-      <h3>{mood}</h3>
-        
-      <form action="submit">
-        <label htmlFor="newMusings">Put a thought there</label>
-        <textarea
-          type="text"
-          id="newMusings"
-          onChange={handleChange}
-          value={userInput}
-        />
-        <p className="moodText">Add a feel</p>
-        <div className="moodWrapper">
-          <div className="mood" onClick={handleMood} value="happy" id="happy">
-            <FontAwesomeIcon icon={faGrinAlt} />
-          </div>
-          <div className="mood" onClick={handleMood} value="love" id="love">
-            <FontAwesomeIcon icon={faGrinHearts} />
-          </div>
-          <div
-            className="mood"
-            onClick={handleMood}
-            value="excited"
-            id="excited"
-          >
-            <FontAwesomeIcon icon={faGrinStars} />
-          </div>
-          <div
-            className="mood"
-            onClick={handleMood}
-            value="whatever"
-            id="whatever"
-          >
-            <FontAwesomeIcon icon={faMehRollingEyes} />
-          </div>
-          <div className="mood" onClick={handleMood} value="angry" id="angry">
-            <FontAwesomeIcon icon={faAngry} />
-          </div>
-          <div
-            className="mood"
-            onClick={handleMood}
-            value="shocked"
-            id="shocked"
-          >
-            <FontAwesomeIcon icon={faDizzy} />
-          </div>
-          <div className="mood" onClick={handleMood} value="tired" id="tired">
-            <FontAwesomeIcon icon={faTired} />
-
     <section className="promptContainer">
       <div className="wrapper">
         <form action="submit">
@@ -245,7 +182,7 @@ function Prompts(props) {
             </label>
             <input
               type="image"
-              src="/assets/tired-regular.svg"
+              src="/assets/sad-cry-regular.svg"
               alt="sad face line drawing"
               className="mood"
               onClick={handleMood}
