@@ -32,21 +32,24 @@ function Prompts(props) {
   //submits the input to the database
   const handleClick = (e) => {
     e.preventDefault();
-    const dbRef = firebase.database().ref().child("musings");
+    if (userInput) {
+      const dbRef = firebase.database().ref().child("musings");
 
-    const dateTime = dateTimeFunction();
-    dbRef.push([displayPrompts, userInput, dateTime, mood]);
-    setUserInput("");
-    setMood("");
+      const dateTime = dateTimeFunction();
+      dbRef.push([displayPrompts, userInput, dateTime, mood]);
+      setUserInput("");
+      setMood("");
+    } else {
+      alert("Please enter input before submitting");
+    }
   };
-  
+
   //button to generate random prompt
   const handleRandom = (e) => {
     e.preventDefault();
     const promptLength = props.prompts.length;
     setDisplayPrompts(props.prompts[randomNumber(promptLength)]);
   };
-
 
   //submits selected mood to the database
   const handleMood = (e) => {
@@ -60,10 +63,6 @@ function Prompts(props) {
     const number = Math.floor(Math.random() * length);
     return number;
   };
-
-
-
-
 
   return (
     <section className="promptContainer">

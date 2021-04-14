@@ -374,12 +374,13 @@ input[type="submit"]:focus {
 .mood {
   width: 40px;
   transition: 0.3s;
-  filter: sepia(100%);
+  opacity: 0.3;
 }
 .mood:hover,
 .mood:focus {
   cursor: pointer;
   transform: scale(1.2);
+  opacity: 1;
 }
 .promptBtnContainer {
   display: flex;
@@ -392,6 +393,7 @@ input[type="submit"]:focus {
   margin-top: 10px;
   font-size: 1.25rem;
 }
+
 /* prompt component end */
 /*  */
 /* musing container & cards start */
@@ -446,6 +448,14 @@ input[type="submit"]:focus {
   justify-content: space-around;
   align-items: center;
   padding-top: 35px;
+}
+.gwynnifer {
+  cursor: default;
+  width: 52px;
+}
+.cardMood {
+  cursor: default;
+  width: 40px;
 }
 .navMood {
   font-size: 1.8rem;
