@@ -1,3 +1,4 @@
+import { useState } from "react";
 import firebase from "./firebase";
 import {
   faBookmark,
@@ -5,10 +6,11 @@ import {
   faSmile,
   faTrashAlt,
 } from "@fortawesome/free-regular-svg-icons";
-
+import { faBookmark as faBookmarkFull } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Musings(props) {
+  const [bookmarkIcon, setBookmarkIcon] = useState(false);
   //remove/delete musing
   const handleRemoveMusing = (e) => {
     const targetKey = e.currentTarget.id;
@@ -44,72 +46,92 @@ function Musings(props) {
     editForm.style.display = "none";
   };
 
-  console.log(props.musingState.length);
-
   return (
     <section className="wrapper wrapperThick">
-      <div className="musingContainer">
-        {/* {props.musingState.length === 0 ? <h2>hello</h2> : <h2>we're good</h2>} */}
+      {/* ternary for if there are musings to show: then populate w/ musings */}
+      {props.musingState.length > 0 ? (
+        <div className="musingContainer">
+          {props.musingState.map((item) => {
+            const dateTime = item.musing[2];
+            const writingPrompt = item.musing[0];
+            const userMusing = item.musing[1];
+            return (
+              <div className="musingCard" key={item.key}>
+                <div className="musingHeadline">
+                  {/* displays time */}
+                  <h4>{dateTime}</h4>
+                </div>
 
-        {props.musingState.map((item) => {
-          return (
-            <div className="musingCard" key={item.key}>
-              <div className="musingHeadline">
-                {/* displays time */}
-                <h4>{item.musing[2]}</h4>
-              </div>
+                <div className="musingTextBox">
+                  {/* displays writing prompt */}
+                  <p>{writingPrompt}</p>
+                  {/* displays previously entered musing */}
+                  <p>{userMusing}</p>
 
-              <div className="musingTextBox">
-                {/* displays writing prompt */}
-                <p>{item.musing[0]}</p>
-                {/* displays previously entered musing */}
-                <p>{item.musing[1]}</p>
+                  {/*form is hidden and will appear will 'edit' it selected */}
+                  <form action="submit" id={item.key} className="textBoxEdit">
+                    <label htmlFor="editMusing" className="visually-hidden">
+                      edit musing here
+                    </label>
+                    <textarea
+                      type="text"
+                      id="editMusing"
+                      defaultValue={userMusing}
+                    />
 
-                {/*form is hidden and will appear will 'edit' it selected */}
-                <form action="submit" id={item.key} className="textBoxEdit">
-                  <label htmlFor="editMusing" className="visually-hidden">
-                    edit musing here
-                  </label>
-                  <textarea
-                    type="text"
-                    id="editMusing"
-                    defaultValue={item.musing[1]}
-                  />
-
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleSaveEdit(
-                        item.key,
-                        item.musing[0],
-                        item.musing[2],
-                        e.currentTarget.parentNode[0].value,
-                        e
-                      );
-                    }}
-                  >
-                    save changes
-                  </button>
-                </form>
-                {/*  */}
-                {/* card nav bar, with edit/delete/bookmark */}
-                <div className="musingNav">
-                  <FontAwesomeIcon icon={faSmile} className="navMood" />
-                  <div onClick={handleEdit} id={item.key}>
-                    <FontAwesomeIcon icon={faEdit} className="navButton" />
-                  </div>
-                  <div onClick={handleRemoveMusing} id={item.key}>
-                    <FontAwesomeIcon icon={faTrashAlt} className="navButton" />
-                  </div>
-                  <div>
-                    <FontAwesomeIcon icon={faBookmark} className="navButton" />
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleSaveEdit(
+                          item.key,
+                          writingPrompt,
+                          dateTime,
+                          e.currentTarget.parentNode[0].value,
+                          e
+                        );
+                      }}
+                    >
+                      save changes
+                    </button>
+                  </form>
+                  {/*  */}
+                  {/* card nav bar, with edit/delete/bookmark */}
+                  <div className="musingNav">
+                    <FontAwesomeIcon icon={faSmile} className="navMood" />
+                    <div onClick={handleEdit} id={item.key}>
+                      <FontAwesomeIcon icon={faEdit} className="navButton" />
+                    </div>
+                    <div onClick={handleRemoveMusing} id={item.key}>
+                      <FontAwesomeIcon
+                        icon={faTrashAlt}
+                        className="navButton"
+                      />
+                    </div>
+                    <div>
+                      <FontAwesomeIcon
+                        onClick={() => setBookmarkIcon(!bookmarkIcon)}
+                        icon={bookmarkIcon ? faBookmarkFull : faBookmark}
+                        className="navButton"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
+      ) : (
+        // ternary for if there are NO musings to show: then retun "awaiting your musings"
+        <>
+          <div className="musingWaitingContainer">
+            <img
+              src="/assets/gwynniferWaiting.gif"
+              alt="thought bubble animation"
+            />
+          </div>
+          <h2 className="musingAwaiting">Awaiting your thoughts</h2>
+        </>
+      )}
     </section>
   );
 }

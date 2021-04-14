@@ -9,7 +9,7 @@
 - media queries
 
 
- */
+ /* imports */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Playfair+Display&display=swap");
 
 /* SETUP SNIPPET START */
@@ -480,6 +480,17 @@ input[type="submit"]:focus {
 }
 .textBoxEdit textarea {
   margin-bottom: 10px;
+}
+.musingAwaiting {
+  text-align: center;
+  color: var(--primary1);
+}
+.musingWaitingContainer {
+  margin: 0 auto;
+  width: 400px;
+}
+.musingWaitingContainer img {
+  width: 100%;
 }
 /* musing container & cards end */
 /*  */

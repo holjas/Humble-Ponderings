@@ -1,17 +1,6 @@
 import React from "react";
 import firebase from "./firebase";
 import { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faGrinAlt,
-  faGrinHearts,
-  faGrinStars,
-  faMehRollingEyes,
-  faAngry,
-  faDizzy,
-  faTired,
-  faSadCry,
-} from "@fortawesome/free-regular-svg-icons";
 
 function Prompts(props) {
   const [displayPrompts, setDisplayPrompts] = useState("");
@@ -92,6 +81,7 @@ function Prompts(props) {
             <input
               type="image"
               src="/assets/grin-regular.svg"
+              alt="happy face line drawing"
               className="mood"
               onClick={handleMood}
               value="happy"
@@ -104,6 +94,7 @@ function Prompts(props) {
             <input
               type="image"
               src="/assets/grin-hearts-regular.svg"
+              alt="happy face with heart eyes line drawing"
               className="mood"
               onClick={handleMood}
               value="love"
@@ -116,6 +107,7 @@ function Prompts(props) {
             <input
               type="image"
               src="/assets/grin-stars-regular.svg"
+              alt="excited face line drawing"
               className="mood"
               onClick={handleMood}
               value="excited"
@@ -128,6 +120,7 @@ function Prompts(props) {
             <input
               type="image"
               src="/assets/meh-rolling-eyes-regular.svg"
+              alt="indifferent face line drawing"
               className="mood"
               onClick={handleMood}
               value="whatever"
@@ -140,6 +133,7 @@ function Prompts(props) {
             <input
               type="image"
               src="/assets/angry-regular.svg"
+              alt="angry face line drawing"
               className="mood"
               onClick={handleMood}
               value="angry"
@@ -152,6 +146,7 @@ function Prompts(props) {
             <input
               type="image"
               src="/assets/dizzy-regular.svg"
+              alt="shocked face line drawing"
               className="mood"
               onClick={handleMood}
               value="shocked"
@@ -164,6 +159,7 @@ function Prompts(props) {
             <input
               type="image"
               src="/assets/tired-regular.svg"
+              alt="tired face line drawing"
               className="mood"
               onClick={handleMood}
               value="tired"
@@ -176,6 +172,7 @@ function Prompts(props) {
             <input
               type="image"
               src="/assets/tired-regular.svg"
+              alt="sad face line drawing"
               className="mood"
               onClick={handleMood}
               value="sad"
