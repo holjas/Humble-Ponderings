@@ -1,27 +1,16 @@
+import { useState } from "react";
 import firebase from "./firebase";
-import { useState } from 'react'
 import {
   faBookmark,
   faEdit,
   faSmile,
   faTrashAlt,
-  // faGrinAlt,
-  // faGrinHearts,
-  // faGrinStars,
-  // faMehRollingEyes,
-  // faAngry,
-  // faDizzy,
-  // faTired,
-  // faSadCry,
 } from "@fortawesome/free-regular-svg-icons";
 import { faBookmark as faBookmarkFull } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Musings(props) {
-  // const [userMood, setUserMood] = useState('');
-
   const [bookmarkIcon, setBookmarkIcon] = useState(false);
-
   //remove/delete musing
   const handleRemoveMusing = (e) => {
     const targetKey = e.currentTarget.id;
@@ -30,7 +19,6 @@ function Musings(props) {
       .ref("musings/" + targetKey)
       .remove();
   };
-
   //edit musing, opens the textarea window to make changes
   const handleEdit = (e) => {
     const targetedId = e.currentTarget.parentNode.parentNode.children[1];
@@ -92,34 +80,28 @@ function Musings(props) {
                       defaultValue={userMusing}
                     />
 
-                <button
-
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleSaveEdit(
-                      item.key,
-                      item.musing[0],
-                      item.musing[2],
-                      e.currentTarget.parentNode[0].value,
-                      e
-                    );
-                  }}
-                >
-                  save changes
-                </button>
-              </form>
-              {/*  */}
-              {/* card nav bar, with edit/delete/bookmark */}
-              <div className="musingNav">
-                <div className="navMood">
-                {/* <p id="navMood" value={userMood} onChange={handleUserMood}></p> */}
-                </div>
-                <FontAwesomeIcon icon={faSmile} className="navMood" />
-                <p id="navMood">{item.musing[3]}</p>
-
-                <div onClick={handleEdit} id={item.key}>
-                  <FontAwesomeIcon icon={faEdit} className="navButton" />
-                </div>
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleSaveEdit(
+                          item.key,
+                          writingPrompt,
+                          dateTime,
+                          e.currentTarget.parentNode[0].value,
+                          e
+                        );
+                      }}
+                    >
+                      save changes
+                    </button>
+                  </form>
+                  {/*  */}
+                  {/* card nav bar, with edit/delete/bookmark */}
+                  <div className="musingNav">
+                    <FontAwesomeIcon icon={faSmile} className="navMood" />
+                    <div onClick={handleEdit} id={item.key}>
+                      <FontAwesomeIcon icon={faEdit} className="navButton" />
+                    </div>
                     <div onClick={handleRemoveMusing} id={item.key}>
                       <FontAwesomeIcon
                         icon={faTrashAlt}
