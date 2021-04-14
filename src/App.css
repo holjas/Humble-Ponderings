@@ -375,7 +375,8 @@ input[type="submit"]:focus {
   width: 40px;
   transition: 0.3s;
   opacity: 0.3;
-  height: 30px;
+  height: 50px;
+  padding: 10px 0;
 }
 .mood:hover,
 .mood:focus {
@@ -677,11 +678,6 @@ footer {
   .moodWrapper {
     flex-wrap: wrap;
     align-items: center;
-  }
-  .mood {
-    padding: 10px;
-    width: 60px;
-    height: 30px;
   }
     .musingWaitingContainer {
     margin: 0 auto;
