@@ -23,10 +23,12 @@ function Prompts(props) {
     const time = `${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`;
     return `${date} ${time}`;
   };
+
   //captures the text input values
   const handleChange = (event) => {
     setUserInput(event.target.value);
   };
+
   //submits the input to the database
   const handleClick = (e) => {
     e.preventDefault();
@@ -37,23 +39,31 @@ function Prompts(props) {
     setUserInput("");
     setMood("");
   };
+  
   //button to generate random prompt
   const handleRandom = (e) => {
     e.preventDefault();
     const promptLength = props.prompts.length;
     setDisplayPrompts(props.prompts[randomNumber(promptLength)]);
   };
+
+
   //submits selected mood to the database
   const handleMood = (e) => {
     e.preventDefault();
     const selectedMood = e.target.id;
     setMood(selectedMood);
   };
+
   //generate a random number
   const randomNumber = (length) => {
     const number = Math.floor(Math.random() * length);
     return number;
   };
+
+
+
+
 
   return (
     <section className="promptContainer">
@@ -172,7 +182,7 @@ function Prompts(props) {
             </label>
             <input
               type="image"
-              src="/assets/tired-regular.svg"
+              src="/assets/sad-cry-regular.svg"
               alt="sad face line drawing"
               className="mood"
               onClick={handleMood}
