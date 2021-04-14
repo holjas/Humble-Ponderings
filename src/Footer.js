@@ -44,7 +44,7 @@ function Footer() {
         </div>
 
         <div className="footerSmallContainer">
-          <h2>created for</h2>
+          <h2 className="footerCreated">created for</h2>
           <div className="footerCreatedText">
             <a
               href="https://github.com/gwynnifer-co/"

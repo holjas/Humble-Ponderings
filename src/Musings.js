@@ -44,10 +44,13 @@ function Musings(props) {
     editForm.style.display = "none";
   };
 
+  console.log(props.musingState.length);
+
   return (
     <section className="wrapper wrapperThick">
       <div className="musingContainer">
-        {/* terenary "nothing to see here??" */}
+        {/* {props.musingState.length === 0 ? <h2>hello</h2> : <h2>we're good</h2>} */}
+
         {props.musingState.map((item) => {
           return (
             <div className="musingCard" key={item.key}>

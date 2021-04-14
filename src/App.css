@@ -6,6 +6,7 @@
 - prompt component styling
 - musing component styling
 - footer component styling
+- media queries
 
 
  */
@@ -115,6 +116,7 @@ textarea {
   font-size: 100%;
   line-height: 1.15;
   margin: 0;
+  padding: 0;
 }
 button,
 input {
@@ -248,6 +250,7 @@ template {
   --primary3: #eeebe3;
   --accent1: #eeb4a2;
   --accent2: #e28061;
+  --accent3: #d16b4c;
   --black: #121212;
   --white: #f1f1f1;
   --fontHeadline: "Playfair Display", serif;
@@ -278,7 +281,8 @@ textarea {
   width: 100%;
   height: 150px;
 }
-button {
+button,
+input[type="submit"] {
   color: var(--white);
   background: var(--primary1);
   cursor: pointer;
@@ -289,9 +293,18 @@ button {
   text-transform: uppercase;
   transition: 0.3s;
 }
+input[type="submit"] {
+  background: var(--accent2);
+}
+
 button:hover,
 button:focus {
   transform: scale(1.05);
+}
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+  transform: scale(1.05);
+  background-color: var(--accent3);
 }
 .wrapper {
   max-width: 1220px;
@@ -317,8 +330,8 @@ button:focus {
   width: 100%;
 }
 .header h1 {
-  font-size: 4rem;
-  letter-spacing: 25px;
+  font-size: 3.5rem;
+  letter-spacing: 20px;
   padding-bottom: 20px;
 }
 /* header component end */
@@ -341,9 +354,10 @@ button:focus {
 .promptContainer p {
   font-family: var(--fontHeadline);
   padding-left: 20px;
+  padding-bottom: 15px;
 }
 .promptContainer h4 {
-  padding-top: 15px;
+  font-size: 1.5rem;
   padding-left: 20px;
 }
 .promptContainer textarea,
@@ -357,17 +371,15 @@ button:focus {
   justify-content: space-around;
   padding: 25px 0px;
 }
-
 .mood {
-  font-size: 2.7rem;
+  width: 40px;
   transition: 0.3s;
-  color: var(--primary2);
+  filter: sepia(100%);
 }
 .mood:hover,
 .mood:focus {
   cursor: pointer;
   transform: scale(1.2);
-  color: var(--primary1);
 }
 .promptBtnContainer {
   display: flex;
@@ -380,7 +392,6 @@ button:focus {
   margin-top: 10px;
   font-size: 1.25rem;
 }
-
 /* prompt component end */
 /*  */
 /* musing container & cards start */
@@ -457,9 +468,6 @@ button:focus {
   justify-content: center;
   align-items: center;
 }
-.textBoxEdit textarea {
-  padding: 0;
-}
 .textBoxEdit label {
   visibility: hidden;
   position: absolute;
@@ -498,10 +506,6 @@ footer {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: flex-start;
-}
-
-.footerCreatedText {
   width: 100%;
   align-items: center;
   min-height: 3rem;
@@ -534,3 +538,97 @@ footer {
   border-radius: 3px;
 }
 /* footer end */
+/* media queries start */
+@media screen and (max-width: 1140px) {
+  .header h1 {
+    font-size: 3rem;
+    letter-spacing: 15px;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .wrapperThick {
+    padding: 80px;
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .wrapperThick {
+    padding: 40px;
+  }
+  .headerImageContainer {
+    width: 375px;
+  }
+  .header h1 {
+    text-align: center;
+    font-size: 2.8rem;
+    letter-spacing: 10px;
+  }
+  .header h3 {
+    text-align: center;
+  }
+  .promptBtnContainer {
+    flex-direction: column;
+  }
+  .promptContainer button {
+    margin-bottom: 10px;
+  }
+  .musingContainer {
+    grid-template-columns: 1fr;
+  }
+  .footerContainer {
+    flex-direction: column;
+  }
+  .footerSmallContainer {
+    width: 100%;
+  }
+  .footerCreated {
+    padding-top: 20px;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .wrapper {
+    padding: 20px;
+  }
+  .promptContainer h4 {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .wrapper {
+    padding: 10px;
+  }
+  .moodWrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .mood {
+    padding: 10px;
+    width: 60px;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .header h1 {
+    font-size: 1.8rem;
+    letter-spacing: 10px;
+  }
+  .header h3 {
+    font-size: 1rem;
+  }
+  .headerImageContainer {
+    width: 250px;
+  }
+  .promptContainer h4 {
+    font-size: 1.1rem;
+  }
+  .footerSmallContainer h3 {
+    font-size: 16px;
+  }
+  .footerCreatedText img {
+    display: none;
+  }
+}
+/* media queries end */

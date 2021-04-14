@@ -55,14 +55,9 @@ function Prompts(props) {
   };
   //submits selected mood to the database
   const handleMood = (e) => {
-    const selectedMood = e.target.parentNode.parentNode.id;
-    const parentSelectedMood = e.target.parentNode.id;
-    if (selectedMood) {
-      setMood(selectedMood);
-    } else {
-      setMood(parentSelectedMood);
-    }
-    // setMood(selectedMood);
+    e.preventDefault();
+    const selectedMood = e.target.id;
+    setMood(selectedMood);
   };
   //generate a random number
   const randomNumber = (length) => {
@@ -84,60 +79,112 @@ function Prompts(props) {
             onChange={handleChange}
             value={userInput}
           />
-          {/*
-<label htmlFor="moodWrapper"> happy mood</label>
-<input type="image" src="img_submit.gif" alt="Submit" width="48" height="48">
-*/}
 
+          {/* Moods bar */}
           <label htmlFor="moodWrapper">
-            <p>How are you feeling today?</p>
+            <h4>How are you feeling today?</h4>
           </label>
+
           <div className="moodWrapper">
-            <div className="mood" onClick={handleMood} value="happy" id="happy">
-              <FontAwesomeIcon icon={faGrinAlt} />
-            </div>
-            <div className="mood" onClick={handleMood} value="love" id="love">
-              <FontAwesomeIcon icon={faGrinHearts} />
-            </div>
-            <div
+            <label htmlFor="happy" className="visually-hidden">
+              happy mood
+            </label>
+            <input
+              type="image"
+              src="/assets/grin-regular.svg"
+              className="mood"
+              onClick={handleMood}
+              value="happy"
+              id="happy"
+            ></input>
+
+            <label htmlFor="love" className="visually-hidden">
+              love mood
+            </label>
+            <input
+              type="image"
+              src="/assets/grin-hearts-regular.svg"
+              className="mood"
+              onClick={handleMood}
+              value="love"
+              id="love"
+            ></input>
+
+            <label htmlFor="excited" className="visually-hidden">
+              excited mood
+            </label>
+            <input
+              type="image"
+              src="/assets/grin-stars-regular.svg"
               className="mood"
               onClick={handleMood}
               value="excited"
               id="excited"
-            >
-              <FontAwesomeIcon icon={faGrinStars} />
-            </div>
-            <div
+            ></input>
+
+            <label htmlFor="whatever" className="visually-hidden">
+              whatever mood
+            </label>
+            <input
+              type="image"
+              src="/assets/meh-rolling-eyes-regular.svg"
               className="mood"
               onClick={handleMood}
               value="whatever"
               id="whatever"
-            >
-              <FontAwesomeIcon icon={faMehRollingEyes} />
-            </div>
-            <div className="mood" onClick={handleMood} value="angry" id="angry">
-              <FontAwesomeIcon icon={faAngry} />
-            </div>
-            <div
+            ></input>
+
+            <label htmlFor="angry" className="visually-hidden">
+              angry mood
+            </label>
+            <input
+              type="image"
+              src="/assets/angry-regular.svg"
+              className="mood"
+              onClick={handleMood}
+              value="angry"
+              id="angry"
+            ></input>
+
+            <label htmlFor="shocked" className="visually-hidden">
+              shocked mood
+            </label>
+            <input
+              type="image"
+              src="/assets/dizzy-regular.svg"
               className="mood"
               onClick={handleMood}
               value="shocked"
               id="shocked"
-            >
-              <FontAwesomeIcon icon={faDizzy} />
-            </div>
-            <div className="mood" onClick={handleMood} value="tired" id="tired">
-              <FontAwesomeIcon icon={faTired} />
-            </div>
-            <div className="mood" onClick={handleMood} value="Sad" id="sad">
-              <FontAwesomeIcon icon={faSadCry} />
-            </div>
+            ></input>
+
+            <label htmlFor="tired" className="visually-hidden">
+              tired mood
+            </label>
+            <input
+              type="image"
+              src="/assets/tired-regular.svg"
+              className="mood"
+              onClick={handleMood}
+              value="tired"
+              id="tired"
+            ></input>
+
+            <label htmlFor="sad" className="visually-hidden">
+              sad mood
+            </label>
+            <input
+              type="image"
+              src="/assets/tired-regular.svg"
+              className="mood"
+              onClick={handleMood}
+              value="sad"
+              id="sad"
+            ></input>
           </div>
           <div className="promptBtnContainer">
             <button onClick={handleRandom}>generate a new prompt</button>
-            <button onClick={handleClick} type="submit">
-              submit
-            </button>
+            <input type="submit" onClick={handleClick} value="SUBMIT" />
           </div>
         </form>
       </div>
