@@ -26,6 +26,10 @@ function Musings(props) {
     const editForm = e.currentTarget.parentNode.parentNode.children[2];
     editForm.style.display = "flex";
   };
+<<<<<<< HEAD
+=======
+
+>>>>>>> b21125b1b9f1d2a2c974959863c094cd661cd2a3
   //edit musing save button/ send changes to firebse
   const handleSaveEdit = (itemKey, prompt, dateTime, editMusing, event) => {
     firebase
