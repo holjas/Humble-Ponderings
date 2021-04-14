@@ -26,6 +26,14 @@ function Musings(props) {
     const editForm = e.currentTarget.parentNode.parentNode.children[2];
     editForm.style.display = "flex";
   };
+
+  // return FA icon for related value
+
+  
+  // const openTextBox = (area) => {
+  //   const textBoxArea = document.getElementById("textBoxArea");
+  // };
+
   //edit musing save button/ send changes to firebse
   const handleSaveEdit = (itemKey, prompt, dateTime, editMusing, event) => {
     firebase
@@ -45,6 +53,7 @@ function Musings(props) {
     const editForm = e.currentTarget.parentNode.parentNode.children[2];
     editForm.style.display = "none";
   };
+
 
   return (
     <section className="wrapper wrapperThick">
@@ -79,7 +88,7 @@ function Musings(props) {
                       defaultValue={userMusing}
                     />
 
-                    <button
+                <button
                       onClick={(e) => {
                         e.preventDefault();
                         handleSaveEdit(

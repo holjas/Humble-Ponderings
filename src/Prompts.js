@@ -8,6 +8,7 @@ function Prompts(props) {
   const [mood, setMood] = useState("");
 
   //set the first prompt with a random selection
+
   useEffect(() => {
     const promptLength = props.prompts.length;
     setDisplayPrompts(props.prompts[randomNumber(promptLength)]);
