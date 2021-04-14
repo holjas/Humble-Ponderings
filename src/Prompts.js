@@ -69,9 +69,11 @@ function Prompts(props) {
       <div className="wrapper">
         <form action="submit">
           <label htmlFor="newMusings">
+            {/* diplay a writing prompt for the user */}
             <p>Your prompt for the day...</p>
             {<h4>{displayPrompts}</h4>}
           </label>
+          {/* text area for user to enter their thought musing */}
           <textarea
             type="text"
             id="newMusings"
@@ -79,7 +81,7 @@ function Prompts(props) {
             value={userInput}
           />
 
-          {/* Moods bar */}
+          {/* Moods bar start. user selects a mood to include with thought musing*/}
           <label htmlFor="moodWrapper">
             <h4>How are you feeling today?</h4>
           </label>
@@ -189,6 +191,7 @@ function Prompts(props) {
               id="sad"
             ></input>
           </div>
+          {/* Moods bar end*/}
           <div className="promptBtnContainer">
             <button onClick={handleRandom}>generate a new prompt</button>
             <input type="submit" onClick={handleClick} value="SUBMIT" />
