@@ -447,6 +447,12 @@ input[type="submit"]:focus {
   align-items: center;
   padding-top: 35px;
 }
+.gwynnifer {
+  width: 52px;
+}
+.cardMood {
+  width: 40px;
+}
 .navMood {
   font-size: 1.8rem;
   color: var(--primary1);

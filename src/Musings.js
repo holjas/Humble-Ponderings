@@ -3,7 +3,6 @@ import firebase from "./firebase";
 import {
   faBookmark,
   faEdit,
-  faSmile,
   faTrashAlt,
 } from "@fortawesome/free-regular-svg-icons";
 import { faBookmark as faBookmarkFull } from "@fortawesome/free-solid-svg-icons";
@@ -47,6 +46,99 @@ function Musings(props) {
     editForm.style.display = "none";
   };
 
+  const musingNavMood = (moodNav) => {
+
+    switch (moodNav) {
+      case 'happy':
+      return <input
+          type="image"
+          src="/assets/grin-regular.svg"
+          alt="happy face line drawing"
+          className="cardMood"
+          value='happy'
+          id='happy'
+        ></input>;
+      
+      case 'love':
+        return <input
+          type="image"
+          src="/assets/grin-hearts-regular.svg"
+          alt="happy face with heart eyes line drawing"
+          className="cardMood"
+          value='love'
+          id="love"
+          ></input>;
+
+      case 'excited':
+        return <input
+          type="image"
+          src="/assets/grin-stars-regular.svg"
+          alt="excited face line drawing"
+          className="cardMood"
+          value="excited"
+          id="excited"
+        ></input>;
+        
+      case 'whatever':
+        return <input
+          type="image"
+          src="/assets/meh-rolling-eyes-regular.svg"
+          alt="indifferent face line drawing"
+          className="cardMood"
+          value="whatever"
+          id="whatever"
+        ></input>;
+        
+      case 'angry':
+        return <input
+          type="image"
+          src="/assets/angry-regular.svg"
+          alt="angry face line drawing"
+          className="cardMood"
+          value="angry"
+          id="angry"
+        ></input>;
+        
+      case 'shocked':
+        return <input
+          type="image"
+          src="/assets/dizzy-regular.svg"
+          alt="shocked face line drawing"
+          className="cardMood"
+          value="shocked"
+          id="shocked"
+        ></input>;
+        
+      case 'tired':
+        return <input
+          type="image"
+          src="/assets/tired-regular.svg"
+          alt="tired face line drawing"
+          className="cardMood"
+          value="tired"
+          id="tired"
+        ></input>;
+        
+      case 'sad':
+        return <input
+          type="image"
+          src="/assets/sad-cry-regular.svg"
+          alt="sad face line drawing"
+          className="cardMood"
+          value="sad"
+          id="sad"
+        ></input>;
+
+        default:
+          return <input
+          type="image"
+          src="/assets/gwynniferHead.png"
+          alt="ghostly woman haunting our code"
+          className="gwynnifer"
+        ></input>
+    }
+  }
+
   return (
     <section className="wrapper wrapperThick">
       {/* ternary for if there are musings to show: then populate w/ musings */}
@@ -56,6 +148,8 @@ function Musings(props) {
             const dateTime = item.musing[2];
             const writingPrompt = item.musing[0];
             const userMusing = item.musing[1];
+            const moodNav = item.musing[3];
+
             return (
               <div className="musingCard" key={item.key}>
                 <div className="musingHeadline">
@@ -98,7 +192,8 @@ function Musings(props) {
                   {/*  */}
                   {/* card nav bar, with edit/delete/bookmark */}
                   <div className="musingNav">
-                    <FontAwesomeIcon icon={faSmile} className="navMood" />
+                    {musingNavMood(moodNav)}
+
                     <div onClick={handleEdit} id={item.key}>
                       <FontAwesomeIcon icon={faEdit} className="navButton" />
                     </div>
