@@ -7,8 +7,6 @@
 - musing component styling
 - footer component styling
 - media queries
-
-
  /* imports */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Playfair+Display&display=swap");
 
@@ -463,10 +461,15 @@ input[type="submit"]:focus {
   cursor: default;
   width: 40px;
 }
+.navMood {
+  font-size: 1.8rem;
+  color: var(--primary1);
+}
 .navButton {
   font-size: 1.8rem;
   transition: 0.3s;
   color: var(--primary2);
+  transform: scale(1.2);
 }
 .navButton:hover,
 .navButton:focus {
@@ -524,7 +527,6 @@ footer {
   justify-content: flex-start;
   align-items: center;
 }
-
 .footerCreatedText {
   display: flex;
   flex-direction: row;
@@ -571,7 +573,35 @@ footer {
 
 @media screen and (max-width: 960px) {
   .wrapperThick {
-    padding: 80px;
+    padding: 10px 80px;
+  }
+  .header h1 {
+    text-align: center;
+  }
+  .musingContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    row-gap: 20px;
+    column-gap: 30px;
+  }
+  .footerCreatedText img {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    padding: 10px;
+  }
+  .header h1 {
+    text-align: center;
+  }
+  .moodWrapper {
+    padding: 0px;
+  }
+  .footerSmallContainer h3 {
+    font-size: 16px;
   }
 }
 
@@ -584,7 +614,7 @@ footer {
   }
   .header h1 {
     text-align: center;
-    font-size: 2.8rem;
+    font-size: 2.4rem;
     letter-spacing: 10px;
   }
   .header h3 {
@@ -617,11 +647,23 @@ footer {
   .promptContainer h4 {
     font-size: 1.3rem;
   }
+  .footerSmallContainer h3 {
+    font-size: 16px;
+  }
+  .musingWaitingContainer {
+    margin: 0 auto;
+    width: 300px;
+  }
 }
 
 @media screen and (max-width: 480px) {
   .wrapper {
     padding: 10px;
+  }
+  .header h1 {
+    text-align: center;
+    font-size: 1.8rem;
+    letter-spacing: 10px;
   }
   .moodWrapper {
     flex-wrap: wrap;
@@ -630,6 +672,13 @@ footer {
   .mood {
     padding: 10px;
     width: 60px;
+  }
+  .musingWaitingContainer {
+    margin: 0 auto;
+    width: 200px;
+  }
+  .footerSmallContainer h3 {
+    font-size: 14px;
   }
 }
 
@@ -645,13 +694,10 @@ footer {
     font-size: 0.75rem;
   }
   .headerImageContainer {
-    width: 250px;
+    width: 200px;
   }
   .promptContainer h4 {
     font-size: 0.8rem;
-  }
-  .footerSmallContainer h3 {
-    font-size: 12px;
   }
   .footerCreatedText img {
     display: none;
