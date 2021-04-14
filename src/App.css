@@ -7,8 +7,6 @@
 - musing component styling
 - footer component styling
 - media queries
-
-
  /* imports */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Playfair+Display&display=swap");
 
@@ -571,7 +569,6 @@ footer {
     font-size: 3rem;
     letter-spacing: 15px;
   }
-
 }
 
 @media screen and (max-width: 960px) {
@@ -594,11 +591,19 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
+  .wrapper {
+    padding: 10px;
+  }
   .header h1 {
     text-align: center;
   }
+  .moodWrapper {
+    padding: 0px;
+  }
+  .footerSmallContainer h3 {
+    font-size: 16px;
+  }
 }
-
 
 @media screen and (max-width: 740px) {
   .wrapperThick {
@@ -667,6 +672,7 @@ footer {
   .mood {
     padding: 10px;
     width: 60px;
+    height: 30px;
   }
     .musingWaitingContainer {
     margin: 0 auto;
@@ -686,10 +692,10 @@ footer {
     letter-spacing: 10px;
   }
   .header h3 {
-    font-size: .75rem;
+    font-size: 0.75rem;
   }
   .headerImageContainer {
-    width: 250px;
+    width: 200px;
   }
   .promptContainer h4 {
     font-size: .8rem;

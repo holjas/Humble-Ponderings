@@ -38,6 +38,7 @@ function MusingCard({ item }) {
         0: prompt,
         1: editMusing,
         2: dateTime,
+        3: moodNav,
       });
     setIsEdit(false);
   };
