@@ -428,6 +428,12 @@ input[type="submit"]:focus {
   padding-bottom: 20px;
   text-transform: uppercase;
   font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  max-height: 30px;
 }
 .musingTextBox p:nth-child(2) {
   overflow: hidden;
@@ -474,7 +480,7 @@ input[type="submit"]:focus {
   color: var(--primary1);
 }
 .textBoxEdit {
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -623,7 +629,7 @@ footer {
     padding: 10px;
   }
   .moodWrapper {
-    flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
   }
   .mood {
@@ -633,21 +639,24 @@ footer {
 }
 
 @media screen and (max-width: 340px) {
+  .wrapper {
+    padding: 10px;
+  }
   .header h1 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     letter-spacing: 10px;
   }
   .header h3 {
-    font-size: 1rem;
+    font-size: .75rem;
   }
   .headerImageContainer {
     width: 250px;
   }
   .promptContainer h4 {
-    font-size: 1.1rem;
+    font-size: .8rem;
   }
   .footerSmallContainer h3 {
-    font-size: 16px;
+    font-size: 12px;
   }
   .footerCreatedText img {
     display: none;
