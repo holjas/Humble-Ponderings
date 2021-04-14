@@ -529,7 +529,6 @@ footer {
   justify-content: flex-start;
   align-items: center;
 }
-
 .footerCreatedText {
   display: flex;
   flex-direction: row;
@@ -572,13 +571,34 @@ footer {
     font-size: 3rem;
     letter-spacing: 15px;
   }
+
 }
 
 @media screen and (max-width: 960px) {
   .wrapperThick {
-    padding: 80px;
+    padding: 10px 80px;
+  }
+  .header h1 {
+    text-align: center;
+  }
+  .musingContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    row-gap: 20px;
+    column-gap: 30px;
+  }
+  .footerCreatedText img {
+    display: none;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .header h1 {
+    text-align: center;
+  }
+}
+
 
 @media screen and (max-width: 740px) {
   .wrapperThick {
@@ -589,7 +609,7 @@ footer {
   }
   .header h1 {
     text-align: center;
-    font-size: 2.8rem;
+    font-size: 2.4rem;
     letter-spacing: 10px;
   }
   .header h3 {
@@ -622,11 +642,23 @@ footer {
   .promptContainer h4 {
     font-size: 1.3rem;
   }
+  .footerSmallContainer h3 {
+    font-size: 16px;
+  }
+  .musingWaitingContainer {
+    margin: 0 auto;
+    width: 300px;
+  }
 }
 
 @media screen and (max-width: 480px) {
   .wrapper {
     padding: 10px;
+  }
+  .header h1 {
+    text-align: center;
+    font-size: 1.8rem;
+    letter-spacing: 10px;
   }
   .moodWrapper {
     flex-wrap: wrap;
@@ -635,6 +667,13 @@ footer {
   .mood {
     padding: 10px;
     width: 60px;
+  }
+    .musingWaitingContainer {
+    margin: 0 auto;
+    width: 200px;
+  }
+  .footerSmallContainer h3 {
+    font-size: 14px;
   }
 }
 
@@ -654,9 +693,6 @@ footer {
   }
   .promptContainer h4 {
     font-size: .8rem;
-  }
-  .footerSmallContainer h3 {
-    font-size: 12px;
   }
   .footerCreatedText img {
     display: none;
