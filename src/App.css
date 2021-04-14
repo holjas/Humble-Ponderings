@@ -594,11 +594,19 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
+  .wrapper {
+    padding: 10px;
+  }
   .header h1 {
     text-align: center;
   }
+  .moodWrapper {
+    padding: 0px;
+  }
+  .footerSmallContainer h3 {
+    font-size: 16px;
+  }
 }
-
 
 @media screen and (max-width: 740px) {
   .wrapperThick {
@@ -689,7 +697,7 @@ footer {
     font-size: .75rem;
   }
   .headerImageContainer {
-    width: 250px;
+    width: 200px;
   }
   .promptContainer h4 {
     font-size: .8rem;
