@@ -19,7 +19,7 @@ function Musings(props) {
       .remove();
   };
   //edit musing, opens the textarea window to make changes
-  const handleEdit = (e) => {
+  const handleShowEditBox = (e) => {
     const targetedId = e.currentTarget.parentNode.parentNode.children[1];
     targetedId.style.display = "none";
     const editForm = e.currentTarget.parentNode.parentNode.children[2];
@@ -36,118 +36,101 @@ function Musings(props) {
         1: editMusing,
         2: dateTime,
       });
-    handleThis(event);
+    handleHideEditBox(event);
   };
   //hide the edit textform and retun to the regular card view
-  const handleThis = (e) => {
+  const handleHideEditBox = (e) => {
     const targetedId = e.currentTarget.parentNode.parentNode.children[1];
     targetedId.style.display = "-webkit-box";
     const editForm = e.currentTarget.parentNode.parentNode.children[2];
     editForm.style.display = "none";
   };
-
+  //on the muse card, return the mood that was originally submitted
   const musingNavMood = (moodNav) => {
     switch (moodNav) {
       case "happy":
         return (
-          <input
-            type="image"
+          <img
             src="/assets/grin-regular.svg"
             alt="happy face line drawing"
             className="cardMood"
-            value="happy"
-            id="happy"
-          ></input>
+          />
         );
 
       case "love":
         return (
-          <input
-            type="image"
+          <img
             src="/assets/grin-hearts-regular.svg"
             alt="happy face with heart eyes line drawing"
             className="cardMood"
-            value="love"
-            id="love"
-          ></input>
+          />
         );
 
       case "excited":
         return (
-          <input
-            type="image"
+          <img
             src="/assets/grin-stars-regular.svg"
             alt="excited face line drawing"
             className="cardMood"
-            value="excited"
-            id="excited"
-          ></input>
+          />
         );
       case "whatever":
         return (
-          <input
-            type="image"
+          <img
             src="/assets/meh-rolling-eyes-regular.svg"
             alt="indifferent face line drawing"
             className="cardMood"
-            value="whatever"
-            id="whatever"
-          ></input>
+          />
         );
       case "angry":
         return (
-          <input
-            type="image"
+          <img
             src="/assets/angry-regular.svg"
             alt="angry face line drawing"
             className="cardMood"
-            value="angry"
-            id="angry"
-          ></input>
+          />
         );
       case "shocked":
         return (
-          <input
-            type="image"
+          <img
             src="/assets/dizzy-regular.svg"
             alt="shocked face line drawing"
             className="cardMood"
-            value="shocked"
-            id="shocked"
-          ></input>
+          />
         );
       case "tired":
         return (
-          <input
-            type="image"
+          <img
             src="/assets/tired-regular.svg"
             alt="tired face line drawing"
             className="cardMood"
-            value="tired"
-            id="tired"
-          ></input>
+          />
         );
       case "sad":
         return (
-          <input
-            type="image"
+          <img
             src="/assets/sad-cry-regular.svg"
             alt="sad face line drawing"
             className="cardMood"
-            value="sad"
-            id="sad"
-          ></input>
+          />
         );
 
       default:
         return (
-          <input
-            type="image"
+          <img
             src="/assets/gwynniferHead.png"
             alt="ghostly woman haunting our code"
             className="gwynnifer"
-          ></input>
+          />
         );
+    }
+  };
+
+  const handleBookmarkToggle = (element) => {
+    const bookmarkIcon = element.target.outerHTML;
+    console.log(element.target);
+    if (bookmarkIcon.includes("regular")) {
+      console.log("bookmark thing");
     }
   };
 
@@ -206,7 +189,7 @@ function Musings(props) {
                   <div className="musingNav">
                     {musingNavMood(moodNav)}
 
-                    <div onClick={handleEdit} id={item.key}>
+                    <div onClick={handleShowEditBox} id={item.key}>
                       <FontAwesomeIcon icon={faEdit} className="navButton" />
                     </div>
                     <div onClick={handleRemoveMusing} id={item.key}>
@@ -215,12 +198,18 @@ function Musings(props) {
                         className="navButton"
                       />
                     </div>
-                    <div>
+                    <div onClick={() => setBookmarkIcon(!bookmarkIcon)}>
                       <FontAwesomeIcon
-                        onClick={() => setBookmarkIcon(!bookmarkIcon)}
                         icon={bookmarkIcon ? faBookmarkFull : faBookmark}
                         className="navButton"
                       />
+
+                      {/* <img
+                      src="/assets/bookmark-regular.svg"
+                      alt="bookmark line art"
+                      className="navButton"
+                      onClick={(e) => handleBookmarkToggle(e)}
+                    /> */}
                     </div>
                   </div>
                 </div>
