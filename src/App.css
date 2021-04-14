@@ -1,4 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
+/* STYLING DIRECTORY
+- imports
+- setup snippet
+- general styles (varirables)
+- header component styling
+- prompt component styling
+- musing component styling
+- footer component styling
+- media queries
+
+
+ /* imports */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Playfair+Display&display=swap");
 
 /* SETUP SNIPPET START */
 html {
@@ -9,6 +21,7 @@ html {
 }
 body {
   margin: 0;
+  background: var(--primary3);
 }
 article,
 aside,
@@ -16,10 +29,6 @@ header,
 nav,
 section {
   display: block;
-}
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
 }
 figcaption,
 figure,
@@ -107,6 +116,7 @@ textarea {
   font-size: 100%;
   line-height: 1.15;
   margin: 0;
+  padding: 0;
 }
 button,
 input {
@@ -149,9 +159,6 @@ legend {
 progress {
   display: inline-block;
   vertical-align: baseline;
-}
-textarea {
-  overflow: auto;
 }
 [type="checkbox"],
 [type="radio"] {
@@ -216,19 +223,11 @@ template {
   clear: both;
   height: 0;
 }
-
-html {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
 *,
 *:before,
 *:after {
   box-sizing: inherit;
 }
-
 .sr-only {
   position: absolute;
   width: 1px;
@@ -251,139 +250,397 @@ html {
   --primary3: #eeebe3;
   --accent1: #eeb4a2;
   --accent2: #e28061;
+  --accent3: #d16b4c;
   --black: #121212;
   --white: #f1f1f1;
   --fontHeadline: "Playfair Display", serif;
   --fontMain: "Montserrat", sans-serif;
-}
-.appWrapper {
-  max-width: 1220px;
-  margin: 0 auto;
-}
-.wrapper {
-  padding: 40px;
-}
-.warpperThick {
-  padding: 100px 80px;
-}
-
-body {
-  background: var(--primary3);
-}
-
-h1 {
-  color: var(--primary1);
-  font-family: var(--fontHeadline);
-  font-size: 72px;
-  margin: 0;
-}
-
-h3 {
-  /* color: var(--primary3); */
-  font-family: var(--fontHeadline);
-}
-h4 {
-  font-family: var(--fontMain);
-}
-p {
-  font-family: var(--fontMain);
-  margin: 0;
+  --letterSpacingHeadline: 6px;
+  --letterSpacingMain: 1.5px;
 }
 h1,
 h2,
-h3,
-h4 {
+h3 {
+  font-family: var(--fontHeadline);
   text-transform: uppercase;
   letter-spacing: 2.5px;
   margin: 0;
 }
-
-h2 {
-  font-family: "Playfair Display";
+h4,
+p {
+  font-family: var(--fontMain);
+  margin: 0;
+}
+textarea {
+  overflow: auto;
+  outline: none;
+  resize: none;
+  font-family: var(--fontMain);
+  background-color: var(--primary3);
+  border: 8px solid var(--primary1);
+  width: 100%;
+  height: 150px;
+}
+button,
+input[type="submit"] {
+  color: var(--white);
+  background: var(--primary1);
+  cursor: pointer;
+  font-family: var(--fontHeadline);
+  font-weight: bold;
+  border: transparent;
+  padding: 20px 30px;
+  text-transform: uppercase;
+  transition: 0.3s;
+}
+input[type="submit"] {
+  background: var(--accent2);
 }
 
-form {
+button:hover,
+button:focus {
+  transform: scale(1.05);
+}
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+  transform: scale(1.05);
+  background-color: var(--accent3);
+}
+.wrapper {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 40px;
+}
+.wrapperThick {
+  padding: 100px;
+}
+/*  */
+/* header component start */
+.header {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: var(--primary1);
 }
-
-label {
-  font-family: var(--fontHeadline);
-  font-size: 24px;
-  color: var(--white);
-  background: var(--primary1);
-  width: 50vw;
-  height: auto;
-  padding: 20px;
+.headerImageContainer {
+  width: 500px;
 }
-
-textarea {
-  background: var(--primary3);
-  border: 8px solid var(--primary1);
-  margin: 0 auto;
-  width: 50vw;
-  height: 20vh;
+.headerImageContainer img {
+  width: 100%;
 }
-
-textarea:focus {
-  border: 2px solid white;
-  padding: 15px;
+.header h1 {
+  font-size: 3.5rem;
+  letter-spacing: 20px;
+  padding-bottom: 20px;
 }
-
-p {
-  font-family: var(--fontMain);
+/* header component end */
+/*  */
+/* prompt component start */
+.promptContainer form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
 }
-
-.moodText {
-  background: var(--primary1);
+.promptContainer label {
+  width: 80%;
+  padding: 10px 0;
   color: var(--primary3);
-  width: 50vw;
-  text-align: center;
-  font-family: var(--fontHeadline);
-  margin-top: 20px;
-  padding: 20px 0;
+  background: var(--primary1);
+  border: 8px solid var(--primary1);
 }
-
+.promptContainer p {
+  font-family: var(--fontHeadline);
+  padding-left: 20px;
+  padding-bottom: 15px;
+}
+.promptContainer h4 {
+  font-size: 1.5rem;
+  padding-left: 20px;
+}
+.promptContainer textarea,
+.moodWrapper {
+  width: 80%;
+}
 .moodWrapper {
   border: 8px solid var(--primary1);
-  color: var(--primary1);
   display: flex;
   flex-direction: row;
-  font-size: 50px;
-  justify-content: space-between;
-  padding: 10px;
-  width: 50vw;
+  justify-content: space-around;
+  padding: 25px 0px;
 }
-
 .mood {
-  cursor: pointer;
+  width: 40px;
+  transition: 0.3s;
+  filter: sepia(100%);
 }
-
-.mood:hover {
+.mood:hover,
+.mood:focus {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+.promptBtnContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+}
+.promptContainer button {
+  margin-top: 10px;
+  font-size: 1.25rem;
+}
+/* prompt component end */
+/*  */
+/* musing container & cards start */
+.musingContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  row-gap: 40px;
+  column-gap: 80px;
+}
+.musingCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border: 8px solid var(--primary1);
+  height: 450px;
+}
+.musingHeadline {
+  width: 100%;
+  height: 40px;
+  line-height: 35px;
+  background-color: var(--primary1);
+  text-align: left;
+}
+.musingTextBox {
+  padding: 20px;
+  line-height: 130%;
+  width: 95%;
+}
+.musingTextBox p:first-child {
+  padding-bottom: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.musingTextBox p:nth-child(2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 9;
+  height: 210px;
+  flex-grow: 1;
+}
+.musingCard h4 {
+  padding-left: 20px;
+  color: var(--primary3);
+}
+.musingNav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 35px;
+}
+.navMood {
+  font-size: 1.8rem;
+  color: var(--primary1);
+}
+.navButton {
+  font-size: 1.8rem;
+  transition: 0.3s;
   color: var(--primary2);
   transform: scale(1.2);
 }
-
-button {
-  color: var(--white);
-  background: var(--primary1);
+.navButton:hover,
+.navButton:focus {
   cursor: pointer;
-  font-family: var(--fontHeadline);
-  font-size: 1.55rem;
-  font-weight: bold;
-  border: transparent;
-  height: auto;
+  transform: scale(1.2);
+  color: var(--primary1);
+}
+.textBoxEdit {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.textBoxEdit label {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: -999;
+}
+.textBoxEdit button {
+  font-size: 1rem;
+  padding: 15px 25px;
+}
+.textBoxEdit textarea {
+  margin-bottom: 10px;
+}
+.musingAwaiting {
+  text-align: center;
+  color: var(--primary1);
+}
+.musingWaitingContainer {
+  margin: 0 auto;
+  width: 400px;
+}
+.musingWaitingContainer img {
+  width: 100%;
+}
+/* musing container & cards end */
+/*  */
+/* footer start */
+footer {
+  background-color: var(--primary1);
+  color: var(--primary3);
+}
+.footerContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.footerSmallContainer {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.footerCreatedText {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  min-height: 3rem;
+}
+.footerSmallContainer h2 {
+  letter-spacing: var(--letterSpacingHeadline);
+  padding-bottom: 20px;
+}
+.footerSmallContainer h3 {
+  font-family: var(--fontMain);
+  text-transform: capitalize;
+  letter-spacing: var(--letterSpacingMain);
+  padding-left: 20px;
+}
+.footerSmallContainer svg {
+  font-size: 1.8rem;
   margin: 10px;
-  padding: 20px 10px;
-  text-transform: uppercase;
-  width: 15vw;
+}
+.footerSmallContainer a,
+.footerSmallContainer a:visited {
+  color: var(--primary3);
   transition: 0.3s;
 }
-
-button:focus,
-button:hover {
-  border: transparent;
-  transform: scale(1.05);
+.footerSmallContainer a:hover,
+.footerSmallContainer a:focus {
+  transform: scale(1.2);
 }
+.footerCreatedText img {
+  width: 40px;
+  border-radius: 3px;
+}
+/* footer end */
+/* media queries start */
+@media screen and (max-width: 1140px) {
+  .header h1 {
+    font-size: 3rem;
+    letter-spacing: 15px;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .wrapperThick {
+    padding: 80px;
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .wrapperThick {
+    padding: 40px;
+  }
+  .headerImageContainer {
+    width: 375px;
+  }
+  .header h1 {
+    text-align: center;
+    font-size: 2.8rem;
+    letter-spacing: 10px;
+  }
+  .header h3 {
+    text-align: center;
+  }
+  .promptBtnContainer {
+    flex-direction: column;
+  }
+  .promptContainer button {
+    margin-bottom: 10px;
+  }
+  .musingContainer {
+    grid-template-columns: 1fr;
+  }
+  .footerContainer {
+    flex-direction: column;
+  }
+  .footerSmallContainer {
+    width: 100%;
+  }
+  .footerCreated {
+    padding-top: 20px;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .wrapper {
+    padding: 20px;
+  }
+  .promptContainer h4 {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .wrapper {
+    padding: 10px;
+  }
+  .moodWrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .mood {
+    padding: 10px;
+    width: 60px;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .header h1 {
+    font-size: 1.8rem;
+    letter-spacing: 10px;
+  }
+  .header h3 {
+    font-size: 1rem;
+  }
+  .headerImageContainer {
+    width: 250px;
+  }
+  .promptContainer h4 {
+    font-size: 1.1rem;
+  }
+  .footerSmallContainer h3 {
+    font-size: 16px;
+  }
+  .footerCreatedText img {
+    display: none;
+  }
+}
+/* media queries end */
