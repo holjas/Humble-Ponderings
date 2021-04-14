@@ -463,15 +463,10 @@ input[type="submit"]:focus {
   cursor: default;
   width: 40px;
 }
-.navMood {
-  font-size: 1.8rem;
-  color: var(--primary1);
-}
 .navButton {
   font-size: 1.8rem;
   transition: 0.3s;
   color: var(--primary2);
-  transform: scale(1.2);
 }
 .navButton:hover,
 .navButton:focus {
@@ -647,13 +642,13 @@ footer {
     letter-spacing: 10px;
   }
   .header h3 {
-    font-size: .75rem;
+    font-size: 0.75rem;
   }
   .headerImageContainer {
     width: 250px;
   }
   .promptContainer h4 {
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
   .footerSmallContainer h3 {
     font-size: 12px;
