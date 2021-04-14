@@ -1,16 +1,70 @@
 import { useState } from "react";
 import firebase from "./firebase";
+import { useState } from 'react'
 import {
   faBookmark,
   faEdit,
   faSmile,
   faTrashAlt,
+  // faGrinAlt,
+  // faGrinHearts,
+  // faGrinStars,
+  // faMehRollingEyes,
+  // faAngry,
+  // faDizzy,
+  // faTired,
+  // faSadCry,
 } from "@fortawesome/free-regular-svg-icons";
 import { faBookmark as faBookmarkFull } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Musings(props) {
+
+  const [userMood, setUserMood] = useState('');
+
+  const handleUserMood = (e) => {
+    console.log(e.target.value);
+    setUserMood(e.target.value);
+
+    // // const { userMood } = props;
+    //   switch (userMood) {
+    //     case 'happy':
+    //       return <p><FontAwesomeIcon icon={faGrinAlt} /></p>;
+    //       break;
+    //     case 'love':
+    //       return <p><FontAwesomeIcon icon={faGrinHearts} /></p>;
+    //       break;
+    //     case 'excited':
+    //       return <p><FontAwesomeIcon icon={faGrinStars} /></p>;
+    //       break;
+    //     case 'whatever':
+    //       return <p><FontAwesomeIcon icon={faMehRollingEyes} /></p>;
+    //       break;
+    //     case 'angry':
+    //       return <p><FontAwesomeIcon icon={faAngry} /></p>;
+    //       break;
+    //     case 'shocked':
+    //       return <p><FontAwesomeIcon icon={faDizzy} /></p>;
+    //       break;
+    //     case 'tired':
+    //       return <p><FontAwesomeIcon icon={faTired} /></p>;
+    //       break;
+    //     case 'sad':
+    //       return <p><FontAwesomeIcon icon={faSadCry} /></p>;
+    //       break;
+    //     default:
+    //       return <p><FontAwesomeIcon icon={faSmile} className="navMood" /></p>;
+    //       break;
+    //   }
+
+
+  }
+
+
+
+
   const [bookmarkIcon, setBookmarkIcon] = useState(false);
+
   //remove/delete musing
   const handleRemoveMusing = (e) => {
     const targetKey = e.currentTarget.id;
@@ -19,6 +73,8 @@ function Musings(props) {
       .ref("musings/" + targetKey)
       .remove();
   };
+
+
   //edit musing, opens the textarea window to make changes
   const handleEdit = (e) => {
     const targetedId = e.currentTarget.parentNode.parentNode.children[1];
@@ -27,9 +83,7 @@ function Musings(props) {
     editForm.style.display = "flex";
   };
 
-  // return FA icon for related value
 
-  
   // const openTextBox = (area) => {
   //   const textBoxArea = document.getElementById("textBoxArea");
   // };
@@ -89,6 +143,39 @@ function Musings(props) {
                     />
 
                 <button
+
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleSaveEdit(
+                      item.key,
+                      item.musing[0],
+                      item.musing[2],
+                      e.currentTarget.parentNode[0].value,
+                      e
+                    );
+                  }}
+                >
+                  save changes
+                </button>
+              </form>
+              {/*  */}
+              {/* card nav bar, with edit/delete/bookmark */}
+              <div className="musingNav">
+                <div className="navMood">
+                <p id="navMood" value={userMood} onChange={handleUserMood}></p>
+                </div>
+                {/* <FontAwesomeIcon icon={faSmile} className="navMood" />
+                <p id="navMood">{item.musing[3]}</p> */}
+
+                <div onClick={handleEdit} id={item.key}>
+                  <FontAwesomeIcon icon={faEdit} className="navButton" />
+                </div>
+                <div onClick={handleRemoveMusing} id={item.key}>
+                  <FontAwesomeIcon icon={faTrashAlt} className="navButton" />
+                </div>
+                <div>
+                  <FontAwesomeIcon icon={faBookmark} className="navButton" />
+
                       onClick={(e) => {
                         e.preventDefault();
                         handleSaveEdit(
