@@ -471,7 +471,6 @@ input[type="submit"]:focus {
   font-size: 1.8rem;
   transition: 0.3s;
   color: var(--primary2);
-  transform: scale(1.2);
 }
 .navButton:hover,
 .navButton:focus {
@@ -677,7 +676,7 @@ footer {
     flex-wrap: wrap;
     align-items: center;
   }
-    .musingWaitingContainer {
+  .musingWaitingContainer {
     margin: 0 auto;
     width: 200px;
   }
@@ -701,7 +700,7 @@ footer {
     width: 200px;
   }
   .promptContainer h4 {
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
   .footerCreatedText img {
     display: none;
