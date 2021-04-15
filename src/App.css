@@ -376,7 +376,7 @@ input[type="submit"]:focus {
   transition: 0.3s;
   opacity: 0.3;
   height: 50px;
-  padding: 10px 0;
+  padding: 10px 5px;
 }
 .mood:hover,
 .mood:focus {
