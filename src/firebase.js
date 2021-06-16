@@ -5,6 +5,7 @@ import "firebase/database";
 const firebaseConfig = {
   apiKey: "AIzaSyDS6rN5guzn9ZE5Cfqzo2sp3cPRz6KkhdY",
   authDomain: "humbleponderings.firebaseapp.com",
+  databaseURL: "https://humbleponderings-default-rtdb.firebaseio.com",
   projectId: "humbleponderings",
   storageBucket: "humbleponderings.appspot.com",
   messagingSenderId: "450362581872",
